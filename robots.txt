@@ -1,11 +1,11 @@
-# robots.txt for PRECISION ROOFING
-# https://precision-roofing.pl
+# robots.txt for PATRYK.BARABACH
+# https://patryk-barabach.pl
 
 User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://precision-roofing.pl/sitemap.xml
+Sitemap: https://patryk-barabach.pl/sitemap.xml
 
 # Disallow development/private directories
 Disallow: /_docs/
