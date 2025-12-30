@@ -1,0 +1,14 @@
+# robots.txt for PRECISION ROOFING
+# https://precision-roofing.pl
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://precision-roofing.pl/sitemap.xml
+
+# Disallow development/private directories
+Disallow: /_docs/
+Disallow: /_scripts/
+Disallow: /_project_snapshots/
+Disallow: /.claude/

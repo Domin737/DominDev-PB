@@ -1,0 +1,12 @@
+# This directory contains local images
+# TODO: Download and optimize images from Unsplash
+#
+# Required images:
+# - og-image.jpg (1200x630px) - Open Graph social sharing image
+# - hero.webp - Hero section background
+# - project-1.webp through project-6.webp - Gallery images
+#
+# Recommended optimization:
+# - Use WebP format with JPEG fallback
+# - Max width: 2000px for hero, 1000px for gallery
+# - Quality: 80-85%
