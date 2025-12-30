@@ -8,9 +8,14 @@
     /* Colors */
     --paper: #F2F0E9;           /* Off-white paper background */
     --paper-dark: #E6E4DD;      /* Darker paper variant */
+    --paper-hover: #EBE9E1;     /* Hover state for paper elements */
     --ink: #111111;             /* Almost black - main text */
     --accent: #D33F2F;          /* Engineering/Safety Red */
     --line: rgba(0,0,0,0.1);    /* Subtle grid lines */
+    --line-light: rgba(0,0,0,0.05); /* Extra subtle lines */
+    --text-secondary: #555;     /* Secondary text color */
+    --text-tertiary: #888;      /* Tertiary/muted text */
+    --text-muted: #666;         /* Muted text for labels */
 
     /* Typography */
     --font-main: 'Space Grotesk', sans-serif;
@@ -118,7 +123,7 @@ body {
 .line-center {
     left: 50%;
     width: 2px;
-    background: rgba(0,0,0,0.05);
+    background: var(--line-light);
 }
 
 .scroll-progress {
@@ -182,7 +187,7 @@ body {
 .brand-meta {
     font-family: var(--font-mono);
     font-size: 0.6rem;
-    color: #666;
+    color: var(--text-muted);
     margin-top: 4px;
 }
 
@@ -451,10 +456,17 @@ body {
 .delay-2 { animation-delay: 0.2s; }
 .delay-3 { animation-delay: 0.3s; }
 
+/* Fade-in animation */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.8s var(--ease) forwards;
+}
+
 .hero-sub {
     max-width: 450px;
     font-size: 1.1rem;
-    color: #555;
+    color: var(--text-secondary);
     border-left: 2px solid var(--accent);
     padding-left: 20px;
 }
@@ -472,14 +484,64 @@ body {
     gap: 15px;
     font-family: var(--font-mono);
     font-size: 0.8rem;
-    color: #888;
+    color: var(--text-tertiary);
 }
 
 .coord-line {
     flex-grow: 1;
     height: 1px;
-    background: #ccc;
+    background: var(--line);
     max-width: 100px;
+}
+
+.coord-label {
+    font-weight: 700;
+    color: var(--accent);
+    margin-right: 10px;
+}
+
+/* Hero CTA */
+.hero-cta {
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.hero-btn {
+    display: inline-flex;
+}
+
+.hero-link {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    position: relative;
+    padding-bottom: 2px;
+    transition: color var(--transition-medium);
+}
+
+.hero-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform var(--transition-medium) var(--ease);
+}
+
+.hero-link:hover {
+    color: var(--accent);
+}
+
+.hero-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
 }
 
 /* Hero visual */
@@ -504,6 +566,7 @@ body {
     filter: grayscale(100%);
     transition: var(--transition-slow);
     border-radius: 4px;
+    will-change: transform, filter;
 }
 
 .visual-wrapper:hover .hero-img {
@@ -559,6 +622,60 @@ body {
 }
 
 /* ==========================================================================
+   TRUST SECTION
+   ========================================================================== */
+.trust-section {
+    padding: 40px 5%;
+    border-bottom: 1px solid var(--line);
+}
+
+.trust-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.trust-label {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--text-tertiary);
+}
+
+.trust-logos {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.trust-logo {
+    flex: 1;
+    min-width: 150px;
+    max-width: 200px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px dashed var(--line);
+    background: var(--paper);
+    transition: var(--transition-medium);
+}
+
+.trust-logo:hover {
+    border-color: var(--accent);
+    border-style: solid;
+}
+
+.logo-placeholder {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-tertiary);
+    letter-spacing: 1px;
+}
+
+/* ==========================================================================
    STATISTICS SECTION
    ========================================================================== */
 .stats-hybrid {
@@ -585,7 +702,7 @@ body {
 }
 
 .stat-item:hover {
-    background: #EBE9E1;
+    background: var(--paper-hover);
 }
 
 .stat-label {
@@ -761,7 +878,7 @@ body {
 
 .step-desc {
     font-size: 0.9rem;
-    color: #555;
+    color: var(--text-secondary);
     line-height: 1.5;
 }
 
@@ -892,7 +1009,7 @@ body {
 
 .cta-sub {
     font-size: 1.1rem;
-    color: #555;
+    color: var(--text-secondary);
     margin-bottom: 40px;
 }
 
@@ -907,7 +1024,7 @@ body {
     font-family: var(--font-mono);
     font-size: 0.7rem;
     margin-bottom: 5px;
-    color: #888;
+    color: var(--text-tertiary);
 }
 
 .c-val {
@@ -990,6 +1107,55 @@ body {
     outline-offset: 2px;
 }
 
+/* Form Notifications */
+.form-notification {
+    padding: 15px 20px;
+    border-radius: 4px;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    margin-bottom: 20px;
+    display: none;
+    align-items: center;
+    gap: 10px;
+}
+
+.form-notification.show {
+    display: flex;
+}
+
+.form-notification.success {
+    background: rgba(39, 174, 96, 0.1);
+    border: 1px solid #27ae60;
+    color: #27ae60;
+}
+
+.form-notification.error {
+    background: rgba(211, 63, 47, 0.1);
+    border: 1px solid var(--accent);
+    color: var(--accent);
+}
+
+.form-notification-icon {
+    font-size: 1.2rem;
+}
+
+/* Input validation states */
+.input-wrap input.error {
+    border-bottom-color: var(--accent);
+}
+
+.input-wrap .input-error {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--accent);
+    margin-top: 5px;
+    display: none;
+}
+
+.input-wrap input.error + label + .input-error {
+    display: block;
+}
+
 /* ==========================================================================
    FOOTER
    ========================================================================== */
@@ -1051,7 +1217,8 @@ body {
 .reveal-box {
     opacity: 0;
     transform: translateY(30px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+    transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+    will-change: opacity, transform;
 }
 
 .reveal-box.visible {
@@ -1181,15 +1348,124 @@ body {
    RESPONSIVE - SMALL MOBILE (max-width: 480px)
    ========================================================================== */
 @media (max-width: 480px) {
+    :root {
+        --section-padding: 40px;
+    }
+
     .hero-title {
         font-size: 2.5rem;
+    }
+
+    .hero-sub {
+        font-size: 1rem;
+    }
+
+    .hero-cta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .cad-btn {
+        padding: 10px 18px;
+        font-size: 0.75rem;
     }
 
     .section-h2 {
         font-size: 1.8rem;
     }
 
+    .mono-idx {
+        font-size: 1rem;
+    }
+
+    .section-header {
+        margin-bottom: 40px;
+    }
+
+    .meta-tag {
+        font-size: 0.8rem;
+    }
+
+    .acc-title {
+        font-size: 1.1rem;
+    }
+
+    .acc-num {
+        margin-right: 15px;
+    }
+
+    .acc-icon {
+        font-size: 1.5rem;
+    }
+
+    .acc-content {
+        padding-left: 10px;
+    }
+
+    .step-title {
+        font-size: 1.1rem;
+    }
+
+    .step-desc {
+        font-size: 0.85rem;
+    }
+
+    .stat-val {
+        font-size: 3rem;
+    }
+
     .big-cta {
         font-size: 2rem;
+    }
+
+    .cta-sub {
+        font-size: 1rem;
+    }
+
+    .c-val {
+        font-size: 1rem;
+    }
+
+    .btn-magnetic {
+        padding: 15px;
+        font-size: 0.85rem;
+    }
+
+    .trust-logos {
+        gap: 20px;
+    }
+
+    .trust-logo {
+        min-width: 120px;
+        height: 50px;
+    }
+
+    .project-meta {
+        flex-direction: column;
+        gap: 5px;
+    }
+}
+
+/* ==========================================================================
+   RESPONSIVE - EXTRA SMALL MOBILE (max-width: 360px)
+   ========================================================================== */
+@media (max-width: 360px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .nav-mix {
+        padding: 0 15px;
+    }
+
+    .brand-box {
+        width: 35px;
+        height: 35px;
+        font-size: 0.8rem;
+    }
+
+    .brand-name {
+        font-size: 0.9rem;
     }
 }

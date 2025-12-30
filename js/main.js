@@ -15,6 +15,9 @@
 document.addEventListener('DOMContentLoaded', () => {
     'use strict';
 
+    // Global reduced motion preference check
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
     // ==========================================================================
     // SCROLL PROGRESS INDICATOR
     // ==========================================================================
@@ -124,9 +127,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const heroImg = document.querySelector('.parallax-img');
 
     if (heroImg) {
-        // Check for reduced motion preference
-        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
         if (!prefersReducedMotion) {
             let ticking = false;
 
@@ -152,8 +152,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const magneticBtn = document.querySelector('.btn-magnetic');
 
     if (magneticBtn) {
-        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
         if (!prefersReducedMotion) {
             magneticBtn.addEventListener('mousemove', (e) => {
                 const rect = magneticBtn.getBoundingClientRect();
@@ -175,8 +173,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const revealElements = document.querySelectorAll('.reveal-box');
 
     if (revealElements.length > 0) {
-        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
         if (prefersReducedMotion) {
             // If reduced motion, just show elements immediately
             revealElements.forEach(el => {
@@ -251,28 +247,100 @@ document.addEventListener('DOMContentLoaded', () => {
     // FORM HANDLING
     // ==========================================================================
     const contactForm = document.getElementById('contact-form');
+    const formNotification = document.getElementById('form-notification');
 
     if (contactForm) {
+        // Phone number validation regex (Polish format)
+        const phoneRegex = /^(\+48)?[\s-]?(\d{2,3})[\s-]?(\d{3})[\s-]?(\d{2,3})[\s-]?(\d{2})?$/;
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        // Show notification helper
+        const showNotification = (type, message) => {
+            if (!formNotification) return;
+
+            formNotification.className = 'form-notification show ' + type;
+            formNotification.innerHTML = `
+                <span class="form-notification-icon">${type === 'success' ? '✓' : '!'}</span>
+                <span>${message}</span>
+            `;
+
+            // Auto-hide after 5 seconds
+            setTimeout(() => {
+                formNotification.classList.remove('show');
+            }, 5000);
+        };
+
+        // Clear field error
+        const clearFieldError = (input) => {
+            input.classList.remove('error');
+            const errorEl = input.parentElement.querySelector('.input-error');
+            if (errorEl) errorEl.style.display = 'none';
+        };
+
+        // Show field error
+        const showFieldError = (input, message) => {
+            input.classList.add('error');
+            let errorEl = input.parentElement.querySelector('.input-error');
+            if (!errorEl) {
+                errorEl = document.createElement('span');
+                errorEl.className = 'input-error';
+                input.parentElement.appendChild(errorEl);
+            }
+            errorEl.textContent = message;
+            errorEl.style.display = 'block';
+        };
+
+        // Clear errors on input
+        contactForm.querySelectorAll('input').forEach(input => {
+            input.addEventListener('input', () => clearFieldError(input));
+        });
+
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
 
             // Get form data
             const formData = new FormData(contactForm);
-            const name = formData.get('name');
-            const phone = formData.get('phone');
+            const name = formData.get('name')?.trim();
+            const email = formData.get('email')?.trim();
+            const phone = formData.get('phone')?.trim();
 
-            // Basic validation
-            if (!name || !phone) {
-                alert('Proszę wypełnić wszystkie pola.');
+            let isValid = true;
+
+            // Validate name
+            const nameInput = contactForm.querySelector('#name');
+            if (!name || name.length < 2) {
+                showFieldError(nameInput, 'Wprowadź imię i nazwisko');
+                isValid = false;
+            }
+
+            // Validate email
+            const emailInput = contactForm.querySelector('#email');
+            if (emailInput && email && !emailRegex.test(email)) {
+                showFieldError(emailInput, 'Nieprawidłowy format email');
+                isValid = false;
+            }
+
+            // Validate phone
+            const phoneInput = contactForm.querySelector('#phone');
+            if (!phone) {
+                showFieldError(phoneInput, 'Wprowadź numer telefonu');
+                isValid = false;
+            } else if (!phoneRegex.test(phone.replace(/\s/g, ''))) {
+                showFieldError(phoneInput, 'Nieprawidłowy format numeru');
+                isValid = false;
+            }
+
+            if (!isValid) {
+                showNotification('error', 'Popraw błędy w formularzu.');
                 return;
             }
 
             // Placeholder for form submission
             // In production, this would send data to a backend
-            console.log('Form submitted:', { name, phone });
+            console.log('Form submitted:', { name, email, phone });
 
             // Show success message
-            alert('Dziękujemy za zgłoszenie! Skontaktujemy się w ciągu 24h.');
+            showNotification('success', 'Dziękujemy za zgłoszenie! Skontaktujemy się w ciągu 24h.');
 
             // Reset form
             contactForm.reset();
