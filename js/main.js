@@ -295,6 +295,14 @@ document.addEventListener('DOMContentLoaded', () => {
             input.addEventListener('input', () => clearFieldError(input));
         });
 
+        // Clear error on RODO checkbox change
+        const rodoInput = contactForm.querySelector('#rodo');
+        if (rodoInput) {
+            rodoInput.addEventListener('change', () => {
+                rodoInput.classList.remove('error');
+            });
+        }
+
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
 
@@ -330,6 +338,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 isValid = false;
             }
 
+            // Validate RODO checkbox
+            const rodoCheckbox = contactForm.querySelector('#rodo');
+            if (rodoCheckbox && !rodoCheckbox.checked) {
+                rodoCheckbox.classList.add('error');
+                isValid = false;
+            }
+
             if (!isValid) {
                 showNotification('error', 'Popraw błędy w formularzu.');
                 return;
@@ -337,7 +352,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Placeholder for form submission
             // In production, this would send data to a backend
-            console.log('Form submitted:', { name, email, phone });
+            console.log('Form submitted:', { name, email, phone, rodo: true });
 
             // Show success message
             showNotification('success', 'Dziękujemy za zgłoszenie! Skontaktujemy się w ciągu 24h.');
