@@ -1226,6 +1226,115 @@ body {
 }
 
 /* ==========================================================================
+   FLOATING ACTION BUTTONS (FAB)
+   Same structure as .cad-btn to avoid z-index issues
+   ========================================================================== */
+.fab-container {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-end;
+}
+
+.fab {
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+}
+
+/* Shadow/background layer (like .cad-btn-borders) */
+.fab-shadow {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 100%;
+    height: 100%;
+    border: 1px solid var(--ink);
+    background: var(--paper);
+    pointer-events: none;
+    transition: background var(--transition-medium);
+}
+
+/* Main button face (like .cad-btn-text) */
+.fab-face {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    background: var(--ink);
+    color: var(--paper);
+    transition: transform var(--transition-medium) var(--ease),
+                background var(--transition-medium),
+                color var(--transition-medium);
+}
+
+.fab-face svg {
+    width: 24px;
+    height: 24px;
+}
+
+.fab:hover .fab-face {
+    transform: translate(4px, 4px);
+    background: var(--paper);
+    color: var(--ink);
+    box-shadow: inset 0 0 0 1px var(--accent);
+}
+
+.fab:hover .fab-shadow {
+    background: var(--ink);
+}
+
+/* Phone button - accent color */
+.fab-phone .fab-shadow {
+    border-color: var(--accent);
+}
+
+.fab-phone .fab-face {
+    background: var(--accent);
+}
+
+.fab-phone:hover .fab-face {
+    background: var(--paper);
+    color: var(--accent);
+    box-shadow: inset 0 0 0 1px var(--accent);
+}
+
+.fab-phone:hover .fab-shadow {
+    background: var(--accent);
+}
+
+/* Scroll-to-top button - hidden by default */
+.fab-top {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: opacity var(--transition-medium),
+                visibility var(--transition-medium),
+                transform var(--transition-medium) var(--ease);
+}
+
+.fab-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Focus states for accessibility */
+.fab:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+}
+
+/* ==========================================================================
    RESPONSIVE - TABLET (max-width: 1024px)
    ========================================================================== */
 @media (max-width: 1024px) {
@@ -1366,6 +1475,12 @@ body {
         gap: 20px;
         text-align: center;
     }
+
+    /* FAB - smaller on tablet */
+    .fab-container {
+        bottom: 20px;
+        right: 20px;
+    }
 }
 
 /* ==========================================================================
@@ -1475,6 +1590,23 @@ body {
         flex-direction: column;
         gap: 5px;
     }
+
+    /* FAB - compact size on small mobile */
+    .fab-container {
+        bottom: 15px;
+        right: 15px;
+        gap: 12px;
+    }
+
+    .fab-face {
+        width: 50px;
+        height: 50px;
+    }
+
+    .fab-face svg {
+        width: 20px;
+        height: 20px;
+    }
 }
 
 /* ==========================================================================
@@ -1497,5 +1629,11 @@ body {
 
     .brand-name {
         font-size: 0.9rem;
+    }
+
+    /* FAB - even smaller on extra small screens */
+    .fab-face {
+        width: 46px;
+        height: 46px;
     }
 }
