@@ -406,10 +406,9 @@ body {
    HERO SECTION - Canva-like Grid Layout (ChatGPT + Gemini hybrid fix)
    ========================================================================== */
 .hero-hybrid {
-    min-height: 90vh;
-    min-height: 90svh; /* Better mobile support with address bar */
+    /* Remove min-height to prevent empty space below content */
     padding-top: 120px;
-    padding-bottom: 50px;
+    padding-bottom: 60px;
     position: relative;
     overflow: hidden;
 }
@@ -561,8 +560,8 @@ body {
     width: 100%;
     height: auto;
     max-width: 100%;
-    /* Responsive max-height with clamp */
-    max-height: clamp(360px, 70vh, 620px);
+    /* Larger max-height for bigger image */
+    max-height: clamp(450px, 80vh, 750px);
     object-fit: contain;
     object-position: right bottom;
     filter: grayscale(100%);
