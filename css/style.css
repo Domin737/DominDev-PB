@@ -1392,12 +1392,13 @@ body {
     }
 
     .hero-cta .cad-btn {
-        width: 100%;
-        text-align: center;
+        /* Don't use full width - keep inline to preserve shadow structure */
+        width: auto;
+        max-width: calc(100% - 8px); /* Account for shadow offset (4px) */
     }
 
     .hero-cta .cad-btn-text {
-        justify-content: center;
+        text-align: center;
     }
 
     .section-h2 {
