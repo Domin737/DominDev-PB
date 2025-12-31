@@ -373,4 +373,44 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // ==========================================================================
+    // FLOATING ACTION BUTTONS (SCROLL TO TOP)
+    // ==========================================================================
+    const fabTop = document.querySelector('.fab-top');
+
+    if (fabTop) {
+        // Show/hide scroll-to-top button based on scroll position
+        const toggleFabVisibility = () => {
+            const scrollThreshold = 400;
+            if (window.scrollY > scrollThreshold) {
+                fabTop.classList.add('visible');
+            } else {
+                fabTop.classList.remove('visible');
+            }
+        };
+
+        // Initial check
+        toggleFabVisibility();
+
+        // Listen for scroll events (throttled via requestAnimationFrame)
+        let fabTicking = false;
+        window.addEventListener('scroll', () => {
+            if (!fabTicking) {
+                requestAnimationFrame(() => {
+                    toggleFabVisibility();
+                    fabTicking = false;
+                });
+                fabTicking = true;
+            }
+        });
+
+        // Scroll to top on click
+        fabTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: prefersReducedMotion ? 'auto' : 'smooth'
+            });
+        });
+    }
 });
