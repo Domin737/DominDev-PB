@@ -1330,8 +1330,11 @@ body {
 
 /* Focus states for accessibility */
 .fab:focus {
-    outline: 2px solid var(--accent);
-    outline-offset: 4px;
+    outline: none;
+}
+
+.fab:focus-visible .fab-face {
+    box-shadow: inset 0 0 0 2px var(--accent);
 }
 
 /* ==========================================================================
