@@ -179,7 +179,8 @@
 
     <!-- Hero section -->
     <header class="hero-hybrid">
-        <div class="container hero-container">
+        <div class="container hero-grid">
+            <!-- Left column: Text content (first in DOM for SEO & accessibility) -->
             <div class="hero-txt">
                 <div class="meta-tag fade-in">/// EST. 2010</div>
                 <h1 class="hero-title">
@@ -197,7 +198,6 @@
                     <div class="coord-line"></div>
                     <span>17.0385° E</span>
                 </div>
-
                 <!-- Hero CTA -->
                 <div class="hero-cta fade-in delay-3">
                     <a href="#kontakt" class="cad-btn hero-btn">
@@ -208,20 +208,18 @@
                 </div>
             </div>
 
+            <!-- Right column: Visual (image) -->
             <div class="hero-visual fade-in delay-2">
-                <div class="visual-wrapper">
-                    <img src="assets/images/hero-building-transparent-01.png" alt="Nowoczesny dach przemysłowy" class="hero-img" loading="lazy">
-
-                    <div class="blueprint-overlay">
-                        <svg viewBox="0 0 100 100" class="rotating-blueprint" aria-hidden="true">
-                            <circle cx="50" cy="50" r="48" stroke="white" stroke-width="0.5" fill="none" stroke-dasharray="4 2"/>
-                            <circle cx="50" cy="50" r="30" stroke="#D33F2F" stroke-width="0.5" fill="none"/>
-                            <line x1="50" y1="0" x2="50" y2="100" stroke="white" stroke-width="0.5"/>
-                            <line x1="0" y1="50" x2="100" y2="50" stroke="white" stroke-width="0.5"/>
-                        </svg>
-                        <div class="floating-tag tag-1">DETAL: RĄBEK</div>
-                        <div class="floating-tag tag-2">MAT: TYTAN-CYNK</div>
-                    </div>
+                <img src="assets/images/hero-building-transparent-01.png" alt="Nowoczesny dach przemysłowy" class="hero-img">
+                <div class="blueprint-overlay">
+                    <svg viewBox="0 0 100 100" class="rotating-blueprint" aria-hidden="true">
+                        <circle cx="50" cy="50" r="48" stroke="white" stroke-width="0.5" fill="none" stroke-dasharray="4 2"/>
+                        <circle cx="50" cy="50" r="30" stroke="#D33F2F" stroke-width="0.5" fill="none"/>
+                        <line x1="50" y1="0" x2="50" y2="100" stroke="white" stroke-width="0.5"/>
+                        <line x1="0" y1="50" x2="100" y2="50" stroke="white" stroke-width="0.5"/>
+                    </svg>
+                    <div class="floating-tag tag-1">DETAL: RĄBEK</div>
+                    <div class="floating-tag tag-2">MAT: TYTAN-CYNK</div>
                 </div>
             </div>
         </div>
