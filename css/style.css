@@ -603,31 +603,28 @@ body {
     filter: grayscale(0%);
 }
 
-.blueprint-overlay {
+/* ==========================================================================
+   HERO IMAGE CAROUSEL
+   ========================================================================== */
+.hero-carousel {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.hero-carousel .hero-img {
     position: absolute;
-    top: 10%;
-    right: 20%;
-    width: 200px;
-    height: 200px;
-    pointer-events: none;
+    top: 0;
+    right: 0;
+    opacity: 0;
+    transition: opacity 2.5s ease-in-out;
 }
 
-.rotating-blueprint {
-    animation: rotate 20s linear infinite;
+.hero-carousel .hero-img.active {
+    opacity: 1;
+    position: relative;
 }
 
-.floating-tag {
-    position: absolute;
-    background: var(--paper);
-    border: 1px solid var(--ink);
-    padding: 5px 10px;
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    box-shadow: 4px 4px 0 rgba(0,0,0,0.1);
-}
-
-.tag-1 { top: 20%; left: -20px; }
-.tag-2 { bottom: 20%; right: -20px; }
 
 /* ==========================================================================
    MARQUEE STRIP
@@ -1313,11 +1310,6 @@ body {
     to { transform: translateX(-50%); }
 }
 
-@keyframes rotate {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-
 /* ==========================================================================
    REVEAL ON SCROLL (initial state)
    ========================================================================== */
@@ -1530,10 +1522,6 @@ body {
 
     .hero-title {
         font-size: 3rem;
-    }
-
-    .blueprint-overlay {
-        display: none;
     }
 
     /* Stats */
