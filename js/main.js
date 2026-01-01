@@ -147,6 +147,28 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ==========================================================================
+    // HERO IMAGE CAROUSEL
+    // ==========================================================================
+    const heroCarousel = document.querySelector('.hero-carousel');
+
+    if (heroCarousel) {
+        const images = heroCarousel.querySelectorAll('.hero-img');
+        let currentIndex = 0;
+        const intervalTime = 8000; // 8 seconds per image
+
+        const showNextImage = () => {
+            images[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + 1) % images.length;
+            images[currentIndex].classList.add('active');
+        };
+
+        // Run carousel (works even with reduced motion since transition handles smoothness)
+        if (images.length > 1) {
+            setInterval(showNextImage, intervalTime);
+        }
+    }
+
+    // ==========================================================================
     // MAGNETIC BUTTON EFFECT
     // ==========================================================================
     const magneticBtn = document.querySelector('.btn-magnetic');
