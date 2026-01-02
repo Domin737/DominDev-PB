@@ -11,12 +11,13 @@ const path = require('path');
 const SIZES = [400, 800];
 const INPUT_DIR = path.join(__dirname, '..', 'assets', 'images');
 
-// Find all dach-*.png files (source files)
+// Find all source PNG files (dach-* and hero-building-*)
 const files = fs.readdirSync(INPUT_DIR).filter(f =>
-    f.startsWith('dach-') &&
+    (f.startsWith('dach-') || f.startsWith('hero-building-')) &&
     f.endsWith('.png') &&
     !f.includes('-400w') &&
-    !f.includes('-800w')
+    !f.includes('-800w') &&
+    !f.includes('-1200w')
 );
 
 console.log(`Found ${files.length} source images to process:`);
