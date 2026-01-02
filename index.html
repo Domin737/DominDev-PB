@@ -228,9 +228,9 @@
                 <span class="link-txt">PROCES</span>
                 <span class="link-hvr">PROCES</span>
             </a>
-            <a href="#realizacje" class="tech-link" data-index="03">
-                <span class="link-txt">REALIZACJE</span>
-                <span class="link-hvr">REALIZACJE</span>
+            <a href="#specjalizacje" class="tech-link" data-index="03">
+                <span class="link-txt">SPECJALIZACJE</span>
+                <span class="link-hvr">SPECJALIZACJE</span>
             </a>
         </div>
 
@@ -255,7 +255,7 @@
         <div class="mobile-menu__inner">
             <a href="#oferta" class="mobile-menu__link" data-index="01">OFERTA</a>
             <a href="#proces" class="mobile-menu__link" data-index="02">PROCES</a>
-            <a href="#realizacje" class="mobile-menu__link" data-index="03">REALIZACJE</a>
+            <a href="#specjalizacje" class="mobile-menu__link" data-index="03">SPECJALIZACJE</a>
             <a href="#kontakt" class="cad-btn mobile-menu__cta">
                 <span class="cad-btn-borders"></span>
                 <span class="cad-btn-text">ZAMÓW WYCENĘ <span class="arr">&nearr;</span></span>
@@ -471,113 +471,185 @@
         </div>
     </section>
 
-    <!-- Projects/Gallery section -->
-    <section id="realizacje" class="section-padding">
+    <!-- Technologies / Specializations Section -->
+    <section id="specjalizacje" class="section-padding">
         <div class="container">
             <div class="section-header">
                 <span class="mono-idx">03</span>
-                <h2 class="section-h2">WYBRANE REALIZACJE</h2>
+                <h2 class="section-h2">NASZE SPECJALIZACJE</h2>
             </div>
 
-            <div class="gallery-scroll">
-                <!-- Projekt 1: Budynek z dachem metalowym -->
-                <div class="project-card reveal-box">
-                    <div class="project-visual">
-                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=2000&auto=format&fit=crop" alt="Dach na rąbek stojący - rezydencja Wrocław" loading="lazy">
-                        <div class="overlay-tech">
-                            <div class="tech-crosshair tl"></div>
-                            <div class="tech-crosshair br"></div>
-                            <div class="tech-dim x-dim">15.4m</div>
-                            <div class="tech-dim y-dim">8.2m</div>
+            <div class="tech-gallery" id="tech-gallery">
+                <!-- Karta 1: Blacha na rąbek -->
+                <article class="tech-card reveal-box">
+                    <div class="tech-card__visual">
+                        <picture>
+                            <source type="image/webp"
+                                srcset="assets/images/dach-blacha-na-rabek-400w.webp 400w,
+                                        assets/images/dach-blacha-na-rabek-800w.webp 800w,
+                                        assets/images/dach-blacha-na-rabek-1200w.webp 1200w"
+                                sizes="(max-width: 480px) 100vw, (max-width: 1024px) 50vw, 50vw">
+                            <img srcset="assets/images/dach-blacha-na-rabek-400w.png 400w,
+                                         assets/images/dach-blacha-na-rabek-800w.png 800w,
+                                         assets/images/dach-blacha-na-rabek-1200w.png 1200w"
+                                 sizes="(max-width: 480px) 100vw, (max-width: 1024px) 50vw, 50vw"
+                                 src="assets/images/dach-blacha-na-rabek-1200w.png"
+                                 alt="Dach z blachy na rąbek stojący"
+                                 loading="lazy" width="1200" height="800">
+                        </picture>
+                        <div class="tech-card__overlay">
+                            <div class="tech-crosshair tech-crosshair--tl"></div>
+                            <div class="tech-crosshair tech-crosshair--br"></div>
                         </div>
                     </div>
-                    <div class="project-meta">
-                        <span class="p-loc">WROCŁAW / OPORÓW</span>
-                        <span class="p-type">BLACHA NA RĄBEK</span>
+                    <div class="tech-card__meta">
+                        <span class="tech-card__type">BLACHA NA RĄBEK</span>
                     </div>
-                </div>
+                </article>
 
-                <!-- Projekt 2: Budynek przemysłowy z dachem płaskim -->
-                <div class="project-card reveal-box delay-1">
-                    <div class="project-visual">
-                        <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=2000&auto=format&fit=crop" alt="Dach płaski hala przemysłowa - Bielany Wrocławskie" loading="lazy">
-                        <div class="overlay-tech">
-                            <div class="tech-crosshair tl"></div>
-                            <div class="tech-crosshair br"></div>
-                            <div class="tech-dim x-dim">2200m²</div>
+                <!-- Karta 2: Membrana EPDM -->
+                <article class="tech-card reveal-box delay-1">
+                    <div class="tech-card__visual">
+                        <picture>
+                            <source type="image/webp"
+                                srcset="assets/images/dach-membrana-epdm-400w.webp 400w,
+                                        assets/images/dach-membrana-epdm-800w.webp 800w,
+                                        assets/images/dach-membrana-epdm-1200w.webp 1200w"
+                                sizes="(max-width: 480px) 100vw, (max-width: 1024px) 50vw, 50vw">
+                            <img srcset="assets/images/dach-membrana-epdm-400w.png 400w,
+                                         assets/images/dach-membrana-epdm-800w.png 800w,
+                                         assets/images/dach-membrana-epdm-1200w.png 1200w"
+                                 sizes="(max-width: 480px) 100vw, (max-width: 1024px) 50vw, 50vw"
+                                 src="assets/images/dach-membrana-epdm-1200w.png"
+                                 alt="Dach z membraną EPDM"
+                                 loading="lazy" width="1200" height="800">
+                        </picture>
+                        <div class="tech-card__overlay">
+                            <div class="tech-crosshair tech-crosshair--tl"></div>
+                            <div class="tech-crosshair tech-crosshair--br"></div>
                         </div>
                     </div>
-                    <div class="project-meta">
-                        <span class="p-loc">BIELANY WROCŁAWSKIE</span>
-                        <span class="p-type">MEMBRANA EPDM</span>
+                    <div class="tech-card__meta">
+                        <span class="tech-card__type">MEMBRANA EPDM</span>
                     </div>
-                </div>
+                </article>
 
-                <!-- Projekt 3: Nowoczesna rezydencja -->
-                <div class="project-card reveal-box delay-2">
-                    <div class="project-visual">
-                        <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=2000&auto=format&fit=crop" alt="Nowoczesna rezydencja z dachem płaskim - Krzyki" loading="lazy">
-                        <div class="overlay-tech">
-                            <div class="tech-crosshair tl"></div>
-                            <div class="tech-crosshair br"></div>
-                            <div class="tech-dim x-dim">12.8m</div>
-                            <div class="tech-dim y-dim">9.5m</div>
+                <!-- Karta 3: Dach płaski / Attyka -->
+                <article class="tech-card reveal-box delay-2">
+                    <div class="tech-card__visual">
+                        <picture>
+                            <source type="image/webp"
+                                srcset="assets/images/dach-plaski-attyka-400w.webp 400w,
+                                        assets/images/dach-plaski-attyka-800w.webp 800w,
+                                        assets/images/dach-plaski-attyka-1200w.webp 1200w"
+                                sizes="(max-width: 480px) 100vw, (max-width: 1024px) 50vw, 50vw">
+                            <img srcset="assets/images/dach-plaski-attyka-400w.png 400w,
+                                         assets/images/dach-plaski-attyka-800w.png 800w,
+                                         assets/images/dach-plaski-attyka-1200w.png 1200w"
+                                 sizes="(max-width: 480px) 100vw, (max-width: 1024px) 50vw, 50vw"
+                                 src="assets/images/dach-plaski-attyka-1200w.png"
+                                 alt="Dach płaski z attyką"
+                                 loading="lazy" width="1200" height="800">
+                        </picture>
+                        <div class="tech-card__overlay">
+                            <div class="tech-crosshair tech-crosshair--tl"></div>
+                            <div class="tech-crosshair tech-crosshair--br"></div>
                         </div>
                     </div>
-                    <div class="project-meta">
-                        <span class="p-loc">WROCŁAW / KRZYKI</span>
-                        <span class="p-type">DACH PŁASKI / ATTYKA</span>
+                    <div class="tech-card__meta">
+                        <span class="tech-card__type">DACH PŁASKI / ATTYKA</span>
                     </div>
-                </div>
+                </article>
 
-                <!-- Projekt 4: Magazyn/hala logistyczna -->
-                <div class="project-card reveal-box delay-3">
-                    <div class="project-visual">
-                        <img src="https://images.unsplash.com/photo-1565610222536-ef125c59da2e?q=80&w=2000&auto=format&fit=crop" alt="Hala logistyczna dach membranowy - Kobierzyce" loading="lazy">
-                        <div class="overlay-tech">
-                            <div class="tech-crosshair tl"></div>
-                            <div class="tech-crosshair br"></div>
-                            <div class="tech-dim x-dim">3500m²</div>
+                <!-- Karta 4: Membrana TPO -->
+                <article class="tech-card reveal-box delay-3">
+                    <div class="tech-card__visual">
+                        <picture>
+                            <source type="image/webp"
+                                srcset="assets/images/dach-membrana-tpo-400w.webp 400w,
+                                        assets/images/dach-membrana-tpo-800w.webp 800w,
+                                        assets/images/dach-membrana-tpo-1200w.webp 1200w"
+                                sizes="(max-width: 480px) 100vw, (max-width: 1024px) 50vw, 50vw">
+                            <img srcset="assets/images/dach-membrana-tpo-400w.png 400w,
+                                         assets/images/dach-membrana-tpo-800w.png 800w,
+                                         assets/images/dach-membrana-tpo-1200w.png 1200w"
+                                 sizes="(max-width: 480px) 100vw, (max-width: 1024px) 50vw, 50vw"
+                                 src="assets/images/dach-membrana-tpo-1200w.png"
+                                 alt="Dach z membraną TPO"
+                                 loading="lazy" width="1200" height="800">
+                        </picture>
+                        <div class="tech-card__overlay">
+                            <div class="tech-crosshair tech-crosshair--tl"></div>
+                            <div class="tech-crosshair tech-crosshair--br"></div>
                         </div>
                     </div>
-                    <div class="project-meta">
-                        <span class="p-loc">KOBIERZYCE</span>
-                        <span class="p-type">MEMBRANA TPO</span>
+                    <div class="tech-card__meta">
+                        <span class="tech-card__type">MEMBRANA TPO</span>
                     </div>
-                </div>
+                </article>
 
-                <!-- Projekt 5: Budynek z dachem metalowym -->
-                <div class="project-card reveal-box">
-                    <div class="project-visual">
-                        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2000&auto=format&fit=crop" alt="Rezydencja z dachem tytan-cynk - Siechnice" loading="lazy">
-                        <div class="overlay-tech">
-                            <div class="tech-crosshair tl"></div>
-                            <div class="tech-crosshair br"></div>
-                            <div class="tech-dim x-dim">18.2m</div>
-                            <div class="tech-dim y-dim">7.6m</div>
+                <!-- Karta 5: Tytan-cynk -->
+                <article class="tech-card reveal-box">
+                    <div class="tech-card__visual">
+                        <picture>
+                            <source type="image/webp"
+                                srcset="assets/images/dach-tytan-cynk-400w.webp 400w,
+                                        assets/images/dach-tytan-cynk-800w.webp 800w,
+                                        assets/images/dach-tytan-cynk-1200w.webp 1200w"
+                                sizes="(max-width: 480px) 100vw, (max-width: 1024px) 50vw, 50vw">
+                            <img srcset="assets/images/dach-tytan-cynk-400w.png 400w,
+                                         assets/images/dach-tytan-cynk-800w.png 800w,
+                                         assets/images/dach-tytan-cynk-1200w.png 1200w"
+                                 sizes="(max-width: 480px) 100vw, (max-width: 1024px) 50vw, 50vw"
+                                 src="assets/images/dach-tytan-cynk-1200w.png"
+                                 alt="Dach z blachy tytan-cynk"
+                                 loading="lazy" width="1200" height="800">
+                        </picture>
+                        <div class="tech-card__overlay">
+                            <div class="tech-crosshair tech-crosshair--tl"></div>
+                            <div class="tech-crosshair tech-crosshair--br"></div>
                         </div>
                     </div>
-                    <div class="project-meta">
-                        <span class="p-loc">SIECHNICE</span>
-                        <span class="p-type">TYTAN-CYNK</span>
+                    <div class="tech-card__meta">
+                        <span class="tech-card__type">TYTAN-CYNK</span>
                     </div>
-                </div>
+                </article>
 
-                <!-- Projekt 6: Biurowiec/obiekt komercyjny -->
-                <div class="project-card reveal-box delay-1">
-                    <div class="project-visual">
-                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2000&auto=format&fit=crop" alt="Biurowiec dach płaski - Wrocław Fabryczna" loading="lazy">
-                        <div class="overlay-tech">
-                            <div class="tech-crosshair tl"></div>
-                            <div class="tech-crosshair br"></div>
-                            <div class="tech-dim x-dim">4800m²</div>
+                <!-- Karta 6: Papa termozgrzewalna -->
+                <article class="tech-card reveal-box delay-1">
+                    <div class="tech-card__visual">
+                        <picture>
+                            <source type="image/webp"
+                                srcset="assets/images/dach-papa-termozgrzewalna-400w.webp 400w,
+                                        assets/images/dach-papa-termozgrzewalna-800w.webp 800w,
+                                        assets/images/dach-papa-termozgrzewalna-1200w.webp 1200w"
+                                sizes="(max-width: 480px) 100vw, (max-width: 1024px) 50vw, 50vw">
+                            <img srcset="assets/images/dach-papa-termozgrzewalna-400w.png 400w,
+                                         assets/images/dach-papa-termozgrzewalna-800w.png 800w,
+                                         assets/images/dach-papa-termozgrzewalna-1200w.png 1200w"
+                                 sizes="(max-width: 480px) 100vw, (max-width: 1024px) 50vw, 50vw"
+                                 src="assets/images/dach-papa-termozgrzewalna-1200w.png"
+                                 alt="Dach z papą termozgrzewalną"
+                                 loading="lazy" width="1200" height="800">
+                        </picture>
+                        <div class="tech-card__overlay">
+                            <div class="tech-crosshair tech-crosshair--tl"></div>
+                            <div class="tech-crosshair tech-crosshair--br"></div>
                         </div>
                     </div>
-                    <div class="project-meta">
-                        <span class="p-loc">WROCŁAW / FABRYCZNA</span>
-                        <span class="p-type">PAPA TERMOZGRZEWALNA</span>
+                    <div class="tech-card__meta">
+                        <span class="tech-card__type">PAPA TERMOZGRZEWALNA</span>
                     </div>
-                </div>
+                </article>
+            </div>
+
+            <!-- Load More button - visible only on mobile/tablet -->
+            <div class="tech-gallery__more" id="gallery-more">
+                <button type="button" class="cad-btn" id="btn-load-more"
+                        aria-expanded="false" aria-controls="tech-gallery">
+                    <span class="cad-btn-borders"></span>
+                    <span class="cad-btn-text">POKAŻ WIĘCEJ <span class="arr">&nearr;</span></span>
+                </button>
             </div>
         </div>
     </section>

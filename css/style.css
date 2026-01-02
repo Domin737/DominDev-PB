@@ -972,48 +972,48 @@ body {
 }
 
 /* ==========================================================================
-   PROJECTS / GALLERY SECTION
+   TECHNOLOGIES GALLERY (SPECJALIZACJE)
    ========================================================================== */
-.gallery-scroll {
+.tech-gallery {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 40px;
 }
 
-.project-card {
+.tech-card {
     cursor: pointer;
 }
 
-.project-visual {
+.tech-card__visual {
     position: relative;
     overflow: hidden;
     border-radius: 4px;
+    aspect-ratio: 3 / 2;
 }
 
-.project-visual img {
+.tech-card__visual img {
     width: 100%;
+    height: 100%;
+    object-fit: cover;
     display: block;
-    transition: var(--transition-slow);
     filter: grayscale(100%);
+    transition: var(--transition-slow);
 }
 
-.project-card:hover img {
+.tech-card:hover img {
     filter: grayscale(0%);
     transform: scale(1.05);
 }
 
-.overlay-tech {
+.tech-card__overlay {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     opacity: 0;
     transition: var(--transition-medium);
     pointer-events: none;
 }
 
-.project-card:hover .overlay-tech {
+.tech-card:hover .tech-card__overlay {
     opacity: 1;
 }
 
@@ -1021,52 +1021,41 @@ body {
     position: absolute;
     width: 20px;
     height: 20px;
+}
+
+.tech-crosshair--tl {
+    top: 20px;
+    left: 20px;
     border-top: 1px solid white;
     border-left: 1px solid white;
 }
 
-.tech-crosshair.tl {
-    top: 20px;
-    left: 20px;
-}
-
-.tech-crosshair.br {
+.tech-crosshair--br {
     bottom: 20px;
     right: 20px;
-    border: none;
     border-bottom: 1px solid white;
     border-right: 1px solid white;
 }
 
-.tech-dim {
-    position: absolute;
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    color: white;
-    background: var(--accent);
-    padding: 2px 5px;
-}
-
-.tech-dim.x-dim {
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.tech-dim.y-dim {
-    top: 50%;
-    right: 10px;
-    transform: translateY(-50%) rotate(90deg);
-}
-
-.project-meta {
+.tech-card__meta {
     margin-top: 15px;
-    display: flex;
-    justify-content: space-between;
-    border-top: 1px solid var(--line);
     padding-top: 10px;
+    border-top: 1px solid var(--line);
+    text-align: center;
+}
+
+.tech-card__type {
     font-family: var(--font-mono);
-    font-size: 0.8rem;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+}
+
+/* Load More button container */
+.tech-gallery__more {
+    display: none;
+    justify-content: center;
+    margin-top: 40px;
+    transition: opacity var(--transition-medium);
 }
 
 /* ==========================================================================
@@ -1611,9 +1600,25 @@ body {
         grid-template-columns: 1fr;
     }
 
-    /* Gallery */
-    .gallery-scroll {
-        grid-template-columns: 1fr;
+    /* Tech Gallery - tablet: hide cards 5-6 */
+    .tech-gallery {
+        gap: 30px;
+    }
+
+    .tech-card:nth-child(n+5) {
+        display: none;
+    }
+
+    .tech-gallery.expanded .tech-card:nth-child(n+5) {
+        display: block;
+    }
+
+    .tech-gallery__more {
+        display: flex;
+    }
+
+    .tech-gallery.expanded + .tech-gallery__more {
+        display: none;
     }
 
     /* CTA */
@@ -1715,6 +1720,24 @@ body {
 
     .step-desc {
         font-size: 0.85rem;
+    }
+
+    /* Tech Gallery - mobile: 1 column, hide cards 3-6 */
+    .tech-gallery {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .tech-card:nth-child(n+3) {
+        display: none;
+    }
+
+    .tech-gallery.expanded .tech-card:nth-child(n+3) {
+        display: block;
+    }
+
+    .tech-card__type {
+        font-size: 0.75rem;
     }
 
     .stat-val {
