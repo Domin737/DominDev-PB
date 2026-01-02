@@ -1,0 +1,850 @@
+/* ==========================================================================
+   PATRYK.BARABACH - PRECISION PRELOADER v2.0
+   Concept: "Blueprint Initialization Sequence"
+
+   High-precision engineering aesthetic with CAD-like visuals,
+   technical readouts, and professional calibration feel.
+   ========================================================================== */
+
+/* ==========================================================================
+   0. SCROLL LOCK (when preloader is active)
+   ========================================================================== */
+html.preloader-active,
+html.preloader-active body {
+    overflow: hidden !important;
+    height: 100%;
+}
+
+/* Hide scrollbar completely during preload */
+html.preloader-active::-webkit-scrollbar {
+    display: none;
+}
+
+html.preloader-active {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+}
+
+/* ==========================================================================
+   1. PRELOADER CONTAINER
+   ========================================================================== */
+#preloader {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--paper);
+    transition: opacity 0.8s cubic-bezier(0.645, 0.045, 0.355, 1),
+                visibility 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+#preloader.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* ==========================================================================
+   2. TECHNICAL GRID BACKGROUND (Full coverage)
+   ========================================================================== */
+.preloader-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+        /* Fine grid (5mm equivalent) */
+        linear-gradient(rgba(17, 17, 17, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(17, 17, 17, 0.04) 1px, transparent 1px),
+        /* Medium grid (25mm equivalent) */
+        linear-gradient(rgba(17, 17, 17, 0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(17, 17, 17, 0.07) 1px, transparent 1px),
+        /* Major grid (100mm equivalent) */
+        linear-gradient(rgba(17, 17, 17, 0.12) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(17, 17, 17, 0.12) 1px, transparent 1px);
+    background-size:
+        10px 10px,
+        10px 10px,
+        50px 50px,
+        50px 50px,
+        200px 200px,
+        200px 200px;
+    animation: gridInit 6s ease-out forwards;
+    pointer-events: none;
+}
+
+/* ==========================================================================
+   3. CORNER CALIBRATION MARKS (Larger, more prominent)
+   ========================================================================== */
+.calibration-mark {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    opacity: 0;
+}
+
+.calibration-mark::before,
+.calibration-mark::after {
+    content: '';
+    position: absolute;
+    background: var(--ink);
+}
+
+/* Corner positions - larger margins for big screens */
+.calibration-mark.tl { top: 40px; left: 40px; }
+.calibration-mark.tr { top: 40px; right: 40px; }
+.calibration-mark.bl { bottom: 40px; left: 40px; }
+.calibration-mark.br { bottom: 40px; right: 40px; }
+
+/* Horizontal lines */
+.calibration-mark.tl::before,
+.calibration-mark.bl::before { left: 0; width: 30px; height: 2px; }
+.calibration-mark.tr::before,
+.calibration-mark.br::before { right: 0; width: 30px; height: 2px; }
+
+/* Vertical lines */
+.calibration-mark.tl::after,
+.calibration-mark.tr::after { top: 0; width: 2px; height: 30px; }
+.calibration-mark.bl::after,
+.calibration-mark.br::after { bottom: 0; width: 2px; height: 30px; }
+
+/* Position corrections */
+.calibration-mark.tl::before,
+.calibration-mark.tl::after { top: 0; left: 0; }
+.calibration-mark.tr::before { top: 0; }
+.calibration-mark.tr::after { top: 0; right: 0; }
+.calibration-mark.bl::before { bottom: 0; }
+.calibration-mark.bl::after { left: 0; }
+.calibration-mark.br::before { bottom: 0; }
+.calibration-mark.br::after { right: 0; }
+
+/* Calibration mark animations */
+.calibration-mark.tl { animation: fadeSlideIn 0.6s 0.1s ease-out forwards; }
+.calibration-mark.tr { animation: fadeSlideIn 0.6s 0.2s ease-out forwards; }
+.calibration-mark.bl { animation: fadeSlideIn 0.6s 0.3s ease-out forwards; }
+.calibration-mark.br { animation: fadeSlideIn 0.6s 0.4s ease-out forwards; }
+
+/* ==========================================================================
+   4. MAIN LOADER CONTENT (Larger scale)
+   ========================================================================== */
+.loader-content {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 600px;
+    max-width: 95vw;
+}
+
+/* ==========================================================================
+   5. BRAND HEADER (Larger, bolder)
+   ========================================================================== */
+.loader-brand {
+    text-align: center;
+    margin-bottom: 50px;
+    position: relative;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.2s ease-out forwards;
+}
+
+.loader-brand::after {
+    content: '';
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 50px;
+    background: linear-gradient(to bottom, var(--ink) 0%, transparent 100%);
+    opacity: 0.4;
+}
+
+.loader-logo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    background: var(--ink);
+    color: var(--paper);
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin-bottom: 16px;
+    position: relative;
+}
+
+/* Technical corner accents on logo */
+.loader-logo::before,
+.loader-logo::after {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border: 2px solid var(--accent);
+}
+
+.loader-logo::before {
+    top: -6px;
+    left: -6px;
+    border-right: none;
+    border-bottom: none;
+}
+
+.loader-logo::after {
+    bottom: -6px;
+    right: -6px;
+    border-left: none;
+    border-top: none;
+}
+
+.loader-name {
+    display: block;
+    font-family: var(--font-main);
+    font-weight: 700;
+    font-size: 1.8rem;
+    letter-spacing: -1px;
+    color: var(--ink);
+}
+
+.loader-tagline {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--accent);
+    letter-spacing: 4px;
+    margin-top: 8px;
+    text-transform: uppercase;
+}
+
+/* ==========================================================================
+   6. TECHNICAL VISUALIZATION (Larger, transparent background)
+   ========================================================================== */
+.loader-visual {
+    position: relative;
+    width: 480px;
+    height: 280px;
+    max-width: 90vw;
+    margin-bottom: 40px;
+    /* NO background - sits directly on the grid */
+    opacity: 0;
+    animation: fadeUp 0.6s 0.4s ease-out forwards;
+}
+
+/* Technical border frame */
+.loader-visual-frame {
+    position: absolute;
+    inset: 0;
+    border: 1px solid rgba(17, 17, 17, 0.2);
+    pointer-events: none;
+}
+
+/* Corner brackets - outside the frame */
+.loader-visual::before,
+.loader-visual::after,
+.loader-visual-frame::before,
+.loader-visual-frame::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--ink);
+}
+
+.loader-visual::before {
+    top: -2px;
+    left: -2px;
+    border-right: none;
+    border-bottom: none;
+}
+
+.loader-visual::after {
+    bottom: -2px;
+    right: -2px;
+    border-left: none;
+    border-top: none;
+}
+
+.loader-visual-frame::before {
+    top: -2px;
+    right: -2px;
+    border-left: none;
+    border-bottom: none;
+}
+
+.loader-visual-frame::after {
+    bottom: -2px;
+    left: -2px;
+    border-right: none;
+    border-top: none;
+}
+
+/* Blueprint SVG */
+.blueprint-svg {
+    width: 100%;
+    height: 100%;
+    padding: 40px 60px;
+    overflow: visible;
+}
+
+/* Construction lines - thicker for visibility */
+.bp-line {
+    fill: none;
+    stroke: var(--ink);
+    stroke-width: 2;
+    stroke-linecap: square;
+    stroke-linejoin: miter;
+    vector-effect: non-scaling-stroke;
+    stroke-dasharray: 600;
+    stroke-dashoffset: 600;
+}
+
+/* Accented structural lines (king post, etc.) */
+.bp-line.accent {
+    stroke: var(--accent);
+    stroke-width: 3;
+}
+
+/* Helper/dimension lines - subtle */
+.bp-line.dim {
+    stroke-width: 1;
+    stroke-dasharray: 4, 4;
+    stroke-dashoffset: 0;
+    opacity: 0.4;
+}
+
+/* Animated state */
+.animating .bp-line:not(.dim) {
+    animation: drawLine 2.2s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
+}
+
+/* Staggered delays for lines */
+.bp-line.delay-1 { animation-delay: 0.15s; }
+.bp-line.delay-2 { animation-delay: 0.35s; }
+.bp-line.delay-3 { animation-delay: 0.55s; }
+.bp-line.delay-4 { animation-delay: 0.75s; }
+.bp-line.delay-5 { animation-delay: 0.95s; }
+.bp-line.delay-6 { animation-delay: 1.15s; }
+
+/* Measurement points - larger */
+.bp-point {
+    fill: var(--paper);
+    stroke: var(--accent);
+    stroke-width: 2.5;
+    opacity: 0;
+    transform-origin: center;
+    transform: scale(0);
+}
+
+.animating .bp-point {
+    animation: pointPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* Point delays */
+.bp-point.delay-1 { animation-delay: 1.4s; }
+.bp-point.delay-2 { animation-delay: 1.5s; }
+.bp-point.delay-3 { animation-delay: 1.6s; }
+.bp-point.delay-4 { animation-delay: 1.7s; }
+.bp-point.delay-5 { animation-delay: 1.8s; }
+
+/* ==========================================================================
+   7. DIMENSION LABELS (Outside the drawing area)
+   ========================================================================== */
+.dim-labels {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.dim-label {
+    position: absolute;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--ink);
+    background: var(--paper);
+    padding: 3px 8px;
+    opacity: 0;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    border: 1px solid rgba(17, 17, 17, 0.15);
+}
+
+/* Width label - below the frame */
+.dim-label.width {
+    bottom: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Height label - right side, rotated */
+.dim-label.height {
+    top: 50%;
+    right: -50px;
+    transform: translateY(-50%);
+}
+
+/* Angle label - top left corner */
+.dim-label.angle {
+    top: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Scale label - bottom left */
+.dim-label.scale {
+    bottom: -35px;
+    left: 0;
+}
+
+.animating .dim-label {
+    animation: fadeIn 0.5s forwards;
+}
+
+.dim-label.width { animation-delay: 2s; }
+.dim-label.height { animation-delay: 2.1s; }
+.dim-label.angle { animation-delay: 2.2s; }
+.dim-label.scale { animation-delay: 2.3s; }
+
+/* Scanning beam effect */
+.scan-beam {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--accent);
+    opacity: 0;
+    box-shadow:
+        0 0 20px rgba(211, 63, 47, 0.7),
+        0 0 40px rgba(211, 63, 47, 0.4),
+        0 0 60px rgba(211, 63, 47, 0.2);
+}
+
+.animating .scan-beam {
+    animation: scanBeam 3s ease-in-out infinite;
+    animation-delay: 0.5s;
+}
+
+/* ==========================================================================
+   8. STATUS FOOTER (Wider, clearer)
+   ========================================================================== */
+.loader-footer {
+    width: 100%;
+    max-width: 480px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.6s ease-out forwards;
+}
+
+/* Status rows */
+.status-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(17, 17, 17, 0.1);
+}
+
+.status-label {
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.status-value {
+    font-weight: 700;
+    color: var(--ink);
+    font-variant-numeric: tabular-nums;
+    font-size: 1rem;
+}
+
+/* Progress bar container */
+.progress-track {
+    width: 100%;
+    height: 6px;
+    background: rgba(17, 17, 17, 0.08);
+    position: relative;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    background: var(--accent);
+    position: relative;
+    transition: width 0.1s linear;
+}
+
+/* Hazard stripes effect on progress */
+.progress-fill::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0.2) 25%,
+        transparent 25%,
+        transparent 50%,
+        rgba(255, 255, 255, 0.2) 50%,
+        rgba(255, 255, 255, 0.2) 75%,
+        transparent 75%,
+        transparent
+    );
+    background-size: 10px 10px;
+    animation: stripeMove 0.4s linear infinite;
+}
+
+/* System log line */
+.system-log {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--text-tertiary);
+    height: 1.5em;
+    overflow: hidden;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.system-log::before {
+    content: '>';
+    margin-right: 8px;
+    color: var(--accent);
+    font-weight: 700;
+}
+
+/* ==========================================================================
+   9. KEYFRAME ANIMATIONS
+   ========================================================================== */
+@keyframes gridInit {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeSlideIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.7);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes drawLine {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes pointPop {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+    60% {
+        transform: scale(1.4);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes scanBeam {
+    0% {
+        left: 0;
+        opacity: 0;
+    }
+    5% {
+        opacity: 0.9;
+    }
+    95% {
+        opacity: 0.9;
+    }
+    100% {
+        left: calc(100% - 3px);
+        opacity: 0;
+    }
+}
+
+@keyframes stripeMove {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 10px 0;
+    }
+}
+
+/* ==========================================================================
+   10. RESPONSIVE ADJUSTMENTS
+   ========================================================================== */
+
+/* Large screens - even bigger */
+@media (min-width: 1400px) {
+    .loader-content {
+        width: 700px;
+    }
+
+    .loader-visual {
+        width: 560px;
+        height: 320px;
+    }
+
+    .loader-name {
+        font-size: 2.2rem;
+    }
+
+    .loader-logo {
+        width: 80px;
+        height: 80px;
+        font-size: 1.4rem;
+    }
+
+    .calibration-mark {
+        width: 80px;
+        height: 80px;
+    }
+
+    .calibration-mark.tl,
+    .calibration-mark.tr { top: 60px; }
+    .calibration-mark.bl,
+    .calibration-mark.br { bottom: 60px; }
+    .calibration-mark.tl,
+    .calibration-mark.bl { left: 60px; }
+    .calibration-mark.tr,
+    .calibration-mark.br { right: 60px; }
+
+    .calibration-mark.tl::before,
+    .calibration-mark.bl::before,
+    .calibration-mark.tr::before,
+    .calibration-mark.br::before { width: 40px; }
+
+    .calibration-mark.tl::after,
+    .calibration-mark.tr::after,
+    .calibration-mark.bl::after,
+    .calibration-mark.br::after { height: 40px; }
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+    .loader-content {
+        width: 400px;
+    }
+
+    .loader-visual {
+        width: 340px;
+        height: 200px;
+    }
+
+    .loader-name {
+        font-size: 1.5rem;
+    }
+
+    .loader-tagline {
+        font-size: 0.65rem;
+        letter-spacing: 2px;
+    }
+
+    .loader-logo {
+        width: 60px;
+        height: 60px;
+        font-size: 1rem;
+    }
+
+    .blueprint-svg {
+        padding: 30px 40px;
+    }
+
+    .dim-label {
+        font-size: 0.6rem;
+    }
+
+    .dim-label.height {
+        right: -40px;
+    }
+
+    .calibration-mark {
+        width: 40px;
+        height: 40px;
+    }
+
+    .calibration-mark.tl,
+    .calibration-mark.tr { top: 25px; }
+    .calibration-mark.bl,
+    .calibration-mark.br { bottom: 25px; }
+    .calibration-mark.tl,
+    .calibration-mark.bl { left: 25px; }
+    .calibration-mark.tr,
+    .calibration-mark.br { right: 25px; }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+    .loader-content {
+        width: 300px;
+    }
+
+    .loader-visual {
+        width: 280px;
+        height: 170px;
+    }
+
+    .loader-name {
+        font-size: 1.2rem;
+    }
+
+    .loader-tagline {
+        font-size: 0.55rem;
+        letter-spacing: 1px;
+    }
+
+    .loader-logo {
+        width: 50px;
+        height: 50px;
+        font-size: 0.9rem;
+    }
+
+    .loader-brand {
+        margin-bottom: 30px;
+    }
+
+    .loader-brand::after {
+        height: 30px;
+        bottom: -15px;
+    }
+
+    .blueprint-svg {
+        padding: 20px 30px;
+    }
+
+    .bp-line {
+        stroke-width: 1.5;
+    }
+
+    .bp-line.accent {
+        stroke-width: 2;
+    }
+
+    .dim-label {
+        font-size: 0.5rem;
+        padding: 2px 5px;
+    }
+
+    .dim-label.width,
+    .dim-label.angle,
+    .dim-label.scale {
+        bottom: -28px;
+        top: auto;
+    }
+
+    .dim-label.angle {
+        top: -28px;
+        bottom: auto;
+    }
+
+    .dim-label.height {
+        right: -35px;
+    }
+
+    .status-row {
+        font-size: 0.75rem;
+    }
+
+    .status-value {
+        font-size: 0.85rem;
+    }
+
+    .system-log {
+        font-size: 0.6rem;
+    }
+
+    .calibration-mark {
+        width: 30px;
+        height: 30px;
+    }
+
+    .calibration-mark.tl,
+    .calibration-mark.tr { top: 15px; }
+    .calibration-mark.bl,
+    .calibration-mark.br { bottom: 15px; }
+    .calibration-mark.tl,
+    .calibration-mark.bl { left: 15px; }
+    .calibration-mark.tr,
+    .calibration-mark.br { right: 15px; }
+
+    .calibration-mark.tl::before,
+    .calibration-mark.bl::before,
+    .calibration-mark.tr::before,
+    .calibration-mark.br::before { width: 15px; height: 1px; }
+
+    .calibration-mark.tl::after,
+    .calibration-mark.tr::after,
+    .calibration-mark.bl::after,
+    .calibration-mark.br::after { height: 15px; width: 1px; }
+}
+
+/* ==========================================================================
+   11. REDUCED MOTION SUPPORT
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+    #preloader,
+    .preloader-grid,
+    .calibration-mark,
+    .loader-brand,
+    .loader-visual,
+    .loader-footer,
+    .bp-line,
+    .bp-point,
+    .dim-label,
+    .scan-beam,
+    .progress-fill::after {
+        animation: none !important;
+        transition: none !important;
+    }
+
+    .calibration-mark,
+    .loader-brand,
+    .loader-visual,
+    .loader-footer,
+    .bp-point,
+    .dim-label {
+        opacity: 1;
+        transform: none;
+    }
+
+    .bp-line {
+        stroke-dashoffset: 0;
+    }
+
+    .scan-beam {
+        display: none;
+    }
+}
