@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>404 | PATRYK.BARABACH - Strona nie znaleziona</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#111111">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/404.css">
+</head>
+<body>
+
+    <!-- Technical grid background -->
+    <div class="error-grid"></div>
+
+    <!-- Calibration corner marks -->
+    <div class="calibration-mark tl"></div>
+    <div class="calibration-mark tr"></div>
+    <div class="calibration-mark bl"></div>
+    <div class="calibration-mark br"></div>
+
+    <!-- Main content -->
+    <main class="error-content">
+        <!-- Brand header -->
+        <div class="error-brand">
+            <a href="/" class="brand-link">
+                <div class="error-logo">P.B</div>
+            </a>
+            <span class="error-name">PATRYK.BARABACH</span>
+            <span class="error-tagline">SYSTEM ERROR // 404</span>
+        </div>
+
+        <!-- Error visualization -->
+        <div class="error-visual">
+            <!-- Corner frame brackets -->
+            <div class="error-visual-frame"></div>
+
+            <!-- SVG: Broken roof structure -->
+            <svg class="error-svg" viewBox="0 0 250 130" xmlns="http://www.w3.org/2000/svg">
+                <!-- Main roof - left side -->
+                <path class="err-line delay-1" d="M25 100 L95 45"/>
+                <!-- Break indicator -->
+                <path class="err-line accent broken delay-2" d="M95 45 L105 40" stroke-dasharray="4 3"/>
+                <!-- Gap -->
+                <path class="err-line accent broken delay-2" d="M115 42 L125 38" stroke-dasharray="4 3"/>
+                <!-- Main roof - right side (displaced) -->
+                <path class="err-line delay-3" d="M135 48 L225 100"/>
+                <!-- Base plate - cracked -->
+                <path class="err-line dim delay-4" d="M25 100 L105 100"/>
+                <path class="err-line dim delay-4" d="M145 100 L225 100"/>
+
+                <!-- Warning symbol in the gap -->
+                <g class="warning-group delay-5">
+                    <polygon class="warning-triangle" points="125,55 140,80 110,80"/>
+                    <text class="warning-text" x="125" y="75" text-anchor="middle">!</text>
+                </g>
+
+                <!-- Measurement points -->
+                <circle class="err-point delay-1" cx="25" cy="100" r="3"/>
+                <circle class="err-point delay-2" cx="95" cy="45" r="3"/>
+                <circle class="err-point warning delay-3" cx="125" cy="40" r="4"/>
+                <circle class="err-point delay-3" cx="135" cy="48" r="3"/>
+                <circle class="err-point delay-4" cx="225" cy="100" r="3"/>
+            </svg>
+
+            <!-- Scanning beam effect -->
+            <div class="scan-beam"></div>
+
+            <!-- Error labels -->
+            <span class="dim-label code">ERR_404</span>
+            <span class="dim-label status">NOT_FOUND</span>
+        </div>
+
+        <!-- Status footer -->
+        <div class="error-footer">
+            <div class="status-row">
+                <span class="status-label">STATUS</span>
+                <span class="status-value error">RESOURCE_NOT_FOUND</span>
+            </div>
+            <div class="status-row">
+                <span class="status-label">PATH</span>
+                <span class="status-value path-display"></span>
+            </div>
+            <div class="error-bar">
+                <div class="error-bar-fill"></div>
+            </div>
+            <div class="system-log">SEARCHING_RESOURCE...</div>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="error-nav">
+            <a href="/" class="cad-btn primary">
+                <span class="cad-btn-borders"></span>
+                <span class="cad-btn-text">STRONA GŁÓWNA</span>
+            </a>
+            <a href="/#kontakt" class="cad-btn">
+                <span class="cad-btn-borders"></span>
+                <span class="cad-btn-text">KONTAKT</span>
+            </a>
+        </nav>
+    </main>
+
+    <!-- Analog grain texture overlay -->
+    <div class="grain-overlay"></div>
+
+    <!-- Animation script -->
+    <script src="js/404.js"></script>
+</body>
+</html>

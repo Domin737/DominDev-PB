@@ -1,0 +1,924 @@
+/* ==========================================================================
+   PATRYK.BARABACH - 404 ERROR PAGE v2.0
+   Concept: "Blueprint Error State"
+
+   Matching preloader aesthetic - compact, technical, precise.
+   ========================================================================== */
+
+/* ==========================================================================
+   0. CSS VARIABLES
+   ========================================================================== */
+:root {
+    --paper: #F2F0E9;
+    --ink: #111111;
+    --accent: #D33F2F;
+    --line: rgba(17, 17, 17, 0.12);
+    --text-tertiary: #888888;
+
+    --font-main: 'Space Grotesk', system-ui, sans-serif;
+    --font-mono: 'Space Mono', 'Courier New', monospace;
+
+    --ease: cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+/* ==========================================================================
+   1. BASE RESET
+   ========================================================================== */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    font-family: var(--font-main);
+    background: var(--paper);
+    color: var(--ink);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* ==========================================================================
+   2. TECHNICAL GRID BACKGROUND
+   ========================================================================== */
+.error-grid {
+    position: fixed;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(17, 17, 17, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(17, 17, 17, 0.04) 1px, transparent 1px),
+        linear-gradient(rgba(17, 17, 17, 0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(17, 17, 17, 0.07) 1px, transparent 1px),
+        linear-gradient(rgba(17, 17, 17, 0.12) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(17, 17, 17, 0.12) 1px, transparent 1px);
+    background-size:
+        10px 10px,
+        10px 10px,
+        50px 50px,
+        50px 50px,
+        200px 200px,
+        200px 200px;
+    animation: gridInit 1s ease-out forwards;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ==========================================================================
+   3. CALIBRATION MARKS (matching preloader)
+   ========================================================================== */
+.calibration-mark {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    opacity: 0;
+}
+
+.calibration-mark::before,
+.calibration-mark::after {
+    content: '';
+    position: absolute;
+    background: var(--ink);
+}
+
+.calibration-mark.tl { top: 40px; left: 40px; }
+.calibration-mark.tr { top: 40px; right: 40px; }
+.calibration-mark.bl { bottom: 40px; left: 40px; }
+.calibration-mark.br { bottom: 40px; right: 40px; }
+
+.calibration-mark.tl::before,
+.calibration-mark.bl::before { left: 0; width: 30px; height: 2px; }
+.calibration-mark.tr::before,
+.calibration-mark.br::before { right: 0; width: 30px; height: 2px; }
+
+.calibration-mark.tl::after,
+.calibration-mark.tr::after { top: 0; width: 2px; height: 30px; }
+.calibration-mark.bl::after,
+.calibration-mark.br::after { bottom: 0; width: 2px; height: 30px; }
+
+.calibration-mark.tl::before,
+.calibration-mark.tl::after { top: 0; left: 0; }
+.calibration-mark.tr::before { top: 0; }
+.calibration-mark.tr::after { top: 0; right: 0; }
+.calibration-mark.bl::before { bottom: 0; }
+.calibration-mark.bl::after { left: 0; }
+.calibration-mark.br::before { bottom: 0; }
+.calibration-mark.br::after { right: 0; }
+
+.calibration-mark.tl { animation: fadeSlideIn 0.6s 0.1s ease-out forwards; }
+.calibration-mark.tr { animation: fadeSlideIn 0.6s 0.2s ease-out forwards; }
+.calibration-mark.bl { animation: fadeSlideIn 0.6s 0.3s ease-out forwards; }
+.calibration-mark.br { animation: fadeSlideIn 0.6s 0.4s ease-out forwards; }
+
+/* ==========================================================================
+   4. MAIN CONTENT (matching preloader structure)
+   ========================================================================== */
+.error-content {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 600px;
+    max-width: 95vw;
+}
+
+/* ==========================================================================
+   5. BRAND HEADER
+   ========================================================================== */
+.error-brand {
+    text-align: center;
+    margin-bottom: 40px;
+    position: relative;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.2s ease-out forwards;
+}
+
+.error-brand::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--ink) 0%, transparent 100%);
+    opacity: 0.4;
+}
+
+.brand-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.error-logo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    background: var(--ink);
+    color: var(--paper);
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin-bottom: 16px;
+    position: relative;
+    transition: background 0.3s var(--ease);
+}
+
+.error-logo:hover {
+    background: var(--accent);
+}
+
+.error-logo::before,
+.error-logo::after {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border: 2px solid var(--accent);
+}
+
+.error-logo::before {
+    top: -6px;
+    left: -6px;
+    border-right: none;
+    border-bottom: none;
+}
+
+.error-logo::after {
+    bottom: -6px;
+    right: -6px;
+    border-left: none;
+    border-top: none;
+}
+
+.error-name {
+    display: block;
+    font-family: var(--font-main);
+    font-weight: 700;
+    font-size: 1.8rem;
+    letter-spacing: -1px;
+    color: var(--ink);
+}
+
+.error-tagline {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--accent);
+    letter-spacing: 4px;
+    margin-top: 8px;
+    text-transform: uppercase;
+}
+
+/* ==========================================================================
+   6. ERROR VISUALIZATION
+   ========================================================================== */
+.error-visual {
+    position: relative;
+    width: 480px;
+    height: 240px;
+    max-width: 90vw;
+    margin-bottom: 30px;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.4s ease-out forwards;
+}
+
+/* Technical border frame */
+.error-visual-frame {
+    position: absolute;
+    inset: 0;
+    border: 1px solid rgba(17, 17, 17, 0.2);
+    pointer-events: none;
+}
+
+/* Corner brackets */
+.error-visual::before,
+.error-visual::after,
+.error-visual-frame::before,
+.error-visual-frame::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--ink);
+}
+
+.error-visual::before {
+    top: -2px;
+    left: -2px;
+    border-right: none;
+    border-bottom: none;
+}
+
+.error-visual::after {
+    bottom: -2px;
+    right: -2px;
+    border-left: none;
+    border-top: none;
+}
+
+.error-visual-frame::before {
+    top: -2px;
+    right: -2px;
+    border-left: none;
+    border-bottom: none;
+}
+
+.error-visual-frame::after {
+    bottom: -2px;
+    left: -2px;
+    border-right: none;
+    border-top: none;
+}
+
+/* SVG */
+.error-svg {
+    width: 100%;
+    height: 100%;
+    padding: 30px 50px;
+    overflow: visible;
+}
+
+/* Lines */
+.err-line {
+    fill: none;
+    stroke: var(--ink);
+    stroke-width: 2;
+    stroke-linecap: square;
+    stroke-linejoin: miter;
+    vector-effect: non-scaling-stroke;
+    stroke-dasharray: 600;
+    stroke-dashoffset: 600;
+}
+
+.err-line.accent {
+    stroke: var(--accent);
+    stroke-width: 2.5;
+}
+
+.err-line.broken {
+    animation: drawLine 1s ease-out forwards, blink 1.5s ease-in-out infinite 1.5s;
+}
+
+.err-line.dim {
+    stroke-width: 1.5;
+    opacity: 0.5;
+}
+
+.animating .err-line:not(.dim) {
+    animation: drawLine 1.5s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
+}
+
+.animating .err-line.dim {
+    animation: drawLine 1s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
+}
+
+/* Line delays */
+.err-line.delay-1 { animation-delay: 0.2s; }
+.err-line.delay-2 { animation-delay: 0.5s; }
+.err-line.delay-3 { animation-delay: 0.8s; }
+.err-line.delay-4 { animation-delay: 1.1s; }
+
+/* Points */
+.err-point {
+    fill: var(--paper);
+    stroke: var(--ink);
+    stroke-width: 2;
+    opacity: 0;
+    transform-origin: center;
+    transform: scale(0);
+}
+
+.err-point.warning {
+    fill: var(--accent);
+    stroke: var(--accent);
+}
+
+.animating .err-point {
+    animation: pointPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.animating .err-point.warning {
+    animation: pointPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards,
+               warningPulse 1.5s ease-in-out infinite 1.5s;
+}
+
+.err-point.delay-1 { animation-delay: 1.4s; }
+.err-point.delay-2 { animation-delay: 1.5s; }
+.err-point.delay-3 { animation-delay: 1.6s; }
+.err-point.delay-4 { animation-delay: 1.7s; }
+
+/* Warning symbol */
+.warning-group {
+    opacity: 0;
+}
+
+.warning-triangle {
+    fill: none;
+    stroke: var(--accent);
+    stroke-width: 2;
+}
+
+.warning-text {
+    font-family: var(--font-mono);
+    font-size: 16px;
+    font-weight: 700;
+    fill: var(--accent);
+}
+
+.animating .warning-group {
+    animation: fadeIn 0.5s 1.8s ease-out forwards, warningPulse 1.5s ease-in-out infinite 2.3s;
+}
+
+/* Scanning beam */
+.scan-beam {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--accent);
+    opacity: 0;
+    box-shadow:
+        0 0 20px rgba(211, 63, 47, 0.7),
+        0 0 40px rgba(211, 63, 47, 0.4);
+}
+
+.animating .scan-beam {
+    animation: scanBeam 3s ease-in-out infinite;
+    animation-delay: 0.5s;
+}
+
+/* Dimension labels */
+.dim-label {
+    position: absolute;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--ink);
+    background: var(--paper);
+    padding: 4px 10px;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    border: 1px solid rgba(17, 17, 17, 0.15);
+    opacity: 0;
+}
+
+.dim-label.code {
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--accent);
+    border-color: var(--accent);
+}
+
+.dim-label.status {
+    bottom: -14px;
+    right: 20px;
+}
+
+.animating .dim-label {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+.animating .dim-label.code { animation-delay: 2s; }
+.animating .dim-label.status { animation-delay: 2.2s; }
+
+/* ==========================================================================
+   7. STATUS FOOTER
+   ========================================================================== */
+.error-footer {
+    width: 100%;
+    max-width: 480px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 30px;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.6s ease-out forwards;
+}
+
+.status-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(17, 17, 17, 0.1);
+}
+
+.status-label {
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.status-value {
+    font-weight: 700;
+    color: var(--ink);
+    font-variant-numeric: tabular-nums;
+}
+
+.status-value.error {
+    color: var(--accent);
+}
+
+/* Error progress bar */
+.error-bar {
+    width: 100%;
+    height: 6px;
+    background: rgba(17, 17, 17, 0.08);
+    position: relative;
+    overflow: hidden;
+}
+
+.error-bar-fill {
+    height: 100%;
+    width: 0%;
+    background: var(--accent);
+    position: relative;
+}
+
+.error-bar-fill::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0.2) 25%,
+        transparent 25%,
+        transparent 50%,
+        rgba(255, 255, 255, 0.2) 50%,
+        rgba(255, 255, 255, 0.2) 75%,
+        transparent 75%,
+        transparent
+    );
+    background-size: 10px 10px;
+    animation: stripeMove 0.4s linear infinite;
+}
+
+.system-log {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--text-tertiary);
+    height: 1.5em;
+    overflow: hidden;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.system-log::before {
+    content: '>';
+    margin-right: 8px;
+    color: var(--accent);
+    font-weight: 700;
+}
+
+/* ==========================================================================
+   8. NAVIGATION
+   ========================================================================== */
+.error-nav {
+    display: flex;
+    gap: 16px;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.8s ease-out forwards;
+}
+
+.cad-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 28px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--ink);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    transition: all 0.3s var(--ease);
+}
+
+.cad-btn.primary {
+    background: var(--ink);
+    color: var(--paper);
+}
+
+.cad-btn.primary:hover {
+    background: var(--accent);
+}
+
+.cad-btn:not(.primary):hover {
+    background: var(--ink);
+    color: var(--paper);
+}
+
+.cad-btn-borders {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.cad-btn-borders::before,
+.cad-btn-borders::after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border: 2px solid currentColor;
+    transition: all 0.3s var(--ease);
+}
+
+.cad-btn-borders::before {
+    top: -4px;
+    left: -4px;
+    border-right: none;
+    border-bottom: none;
+}
+
+.cad-btn-borders::after {
+    bottom: -4px;
+    right: -4px;
+    border-left: none;
+    border-top: none;
+}
+
+.cad-btn:hover .cad-btn-borders::before,
+.cad-btn:hover .cad-btn-borders::after {
+    width: 14px;
+    height: 14px;
+}
+
+/* ==========================================================================
+   9. GRAIN OVERLAY
+   ========================================================================== */
+.grain-overlay {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* ==========================================================================
+   10. KEYFRAME ANIMATIONS
+   ========================================================================== */
+@keyframes gridInit {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeSlideIn {
+    from {
+        opacity: 0;
+        transform: scale(0.7);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+@keyframes drawLine {
+    to { stroke-dashoffset: 0; }
+}
+
+@keyframes pointPop {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+    60% {
+        transform: scale(1.4);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes scanBeam {
+    0% {
+        left: 0;
+        opacity: 0;
+    }
+    5% {
+        opacity: 0.9;
+    }
+    95% {
+        opacity: 0.9;
+    }
+    100% {
+        left: calc(100% - 3px);
+        opacity: 0;
+    }
+}
+
+@keyframes stripeMove {
+    from { background-position: 0 0; }
+    to { background-position: 10px 0; }
+}
+
+@keyframes warningPulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.6;
+        transform: scale(1.1);
+    }
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+/* ==========================================================================
+   11. RESPONSIVE
+   ========================================================================== */
+
+/* Large screens */
+@media (min-width: 1400px) {
+    .error-content {
+        width: 700px;
+    }
+
+    .error-visual {
+        width: 560px;
+        height: 280px;
+    }
+
+    .error-name {
+        font-size: 2.2rem;
+    }
+
+    .error-logo {
+        width: 80px;
+        height: 80px;
+        font-size: 1.4rem;
+    }
+
+    .calibration-mark {
+        width: 80px;
+        height: 80px;
+    }
+
+    .calibration-mark.tl,
+    .calibration-mark.tr { top: 60px; }
+    .calibration-mark.bl,
+    .calibration-mark.br { bottom: 60px; }
+    .calibration-mark.tl,
+    .calibration-mark.bl { left: 60px; }
+    .calibration-mark.tr,
+    .calibration-mark.br { right: 60px; }
+
+    .calibration-mark::before { width: 40px; }
+    .calibration-mark::after { height: 40px; }
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+    .error-content {
+        width: 400px;
+    }
+
+    .error-visual {
+        width: 340px;
+        height: 180px;
+    }
+
+    .error-name {
+        font-size: 1.5rem;
+    }
+
+    .error-tagline {
+        font-size: 0.65rem;
+        letter-spacing: 2px;
+    }
+
+    .error-logo {
+        width: 60px;
+        height: 60px;
+        font-size: 1rem;
+    }
+
+    .error-svg {
+        padding: 20px 35px;
+    }
+
+    .dim-label {
+        font-size: 0.6rem;
+    }
+
+    .calibration-mark {
+        width: 40px;
+        height: 40px;
+    }
+
+    .calibration-mark.tl,
+    .calibration-mark.tr { top: 25px; }
+    .calibration-mark.bl,
+    .calibration-mark.br { bottom: 25px; }
+    .calibration-mark.tl,
+    .calibration-mark.bl { left: 25px; }
+    .calibration-mark.tr,
+    .calibration-mark.br { right: 25px; }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    .error-content {
+        width: 300px;
+    }
+
+    .error-visual {
+        width: 280px;
+        height: 150px;
+    }
+
+    .error-name {
+        font-size: 1.2rem;
+    }
+
+    .error-tagline {
+        font-size: 0.55rem;
+        letter-spacing: 1px;
+    }
+
+    .error-logo {
+        width: 50px;
+        height: 50px;
+        font-size: 0.9rem;
+    }
+
+    .error-brand {
+        margin-bottom: 25px;
+    }
+
+    .error-brand::after {
+        height: 25px;
+        bottom: -12px;
+    }
+
+    .error-svg {
+        padding: 15px 25px;
+    }
+
+    .err-line {
+        stroke-width: 1.5;
+    }
+
+    .dim-label {
+        font-size: 0.5rem;
+        padding: 3px 6px;
+    }
+
+    .status-row {
+        font-size: 0.7rem;
+    }
+
+    .system-log {
+        font-size: 0.55rem;
+    }
+
+    .error-nav {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .cad-btn {
+        width: 100%;
+        padding: 12px 20px;
+    }
+
+    .calibration-mark {
+        width: 30px;
+        height: 30px;
+    }
+
+    .calibration-mark.tl,
+    .calibration-mark.tr { top: 15px; }
+    .calibration-mark.bl,
+    .calibration-mark.br { bottom: 15px; }
+    .calibration-mark.tl,
+    .calibration-mark.bl { left: 15px; }
+    .calibration-mark.tr,
+    .calibration-mark.br { right: 15px; }
+
+    .calibration-mark::before { width: 15px; height: 1px; }
+    .calibration-mark::after { height: 15px; width: 1px; }
+}
+
+/* ==========================================================================
+   12. REDUCED MOTION
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+    .error-grid,
+    .calibration-mark,
+    .error-brand,
+    .error-visual,
+    .error-footer,
+    .error-nav,
+    .err-line,
+    .err-point,
+    .warning-group,
+    .dim-label,
+    .scan-beam,
+    .error-bar-fill::after {
+        animation: none !important;
+        transition: none !important;
+    }
+
+    .calibration-mark,
+    .error-brand,
+    .error-visual,
+    .error-footer,
+    .error-nav,
+    .err-point,
+    .warning-group,
+    .dim-label {
+        opacity: 1;
+        transform: none;
+    }
+
+    .err-line {
+        stroke-dashoffset: 0;
+    }
+
+    .scan-beam {
+        display: none;
+    }
+}
