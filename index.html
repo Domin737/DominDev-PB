@@ -39,6 +39,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 
     <!-- Styles -->
+    <link rel="stylesheet" href="css/preloader.css">
     <link rel="stylesheet" href="css/style.css">
 
     <!-- Schema.org LocalBusiness Structured Data -->
@@ -116,6 +117,86 @@
     </script>
 </head>
 <body>
+
+    <!-- ==========================================================================
+         PRELOADER - Blueprint Initialization Sequence
+         ========================================================================== -->
+    <div id="preloader" aria-hidden="false" aria-label="Ładowanie strony">
+        <!-- Technical grid background -->
+        <div class="preloader-grid"></div>
+
+        <!-- Calibration corner marks -->
+        <div class="calibration-mark tl"></div>
+        <div class="calibration-mark tr"></div>
+        <div class="calibration-mark bl"></div>
+        <div class="calibration-mark br"></div>
+
+        <div class="loader-content">
+            <!-- Brand header -->
+            <div class="loader-brand">
+                <div class="loader-logo">P.B</div>
+                <span class="loader-name">PATRYK.BARABACH</span>
+                <span class="loader-tagline">PRECISION ROOF SYSTEMS</span>
+            </div>
+
+            <!-- Technical blueprint visualization -->
+            <div class="loader-visual">
+                <!-- Corner frame brackets -->
+                <div class="loader-visual-frame"></div>
+
+                <svg class="blueprint-svg" viewBox="0 0 250 130" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Dimension helper lines -->
+                    <line class="bp-line dim" x1="25" y1="105" x2="25" y2="120"/>
+                    <line class="bp-line dim" x1="225" y1="105" x2="225" y2="120"/>
+                    <line class="bp-line dim" x1="25" y1="115" x2="225" y2="115"/>
+
+                    <!-- Main roof structure -->
+                    <path class="bp-line delay-1" d="M25 100 L125 25 L225 100"/>
+                    <!-- Ridge beam (accent) -->
+                    <path class="bp-line accent delay-2" d="M125 25 L125 65"/>
+                    <!-- Collar tie -->
+                    <path class="bp-line delay-3" d="M65 62 L185 62"/>
+                    <!-- Base plate -->
+                    <path class="bp-line delay-3" d="M25 100 L225 100"/>
+                    <!-- Struts -->
+                    <path class="bp-line delay-4" d="M85 100 L125 65"/>
+                    <path class="bp-line delay-4" d="M165 100 L125 65"/>
+                    <!-- Rafters detail -->
+                    <path class="bp-line delay-5" d="M50 85 L125 25"/>
+                    <path class="bp-line delay-5" d="M200 85 L125 25"/>
+
+                    <!-- Measurement points -->
+                    <circle class="bp-point delay-1" cx="125" cy="25" r="3"/>
+                    <circle class="bp-point delay-2" cx="25" cy="100" r="3"/>
+                    <circle class="bp-point delay-3" cx="225" cy="100" r="3"/>
+                    <circle class="bp-point delay-4" cx="125" cy="65" r="3"/>
+                </svg>
+
+                <!-- Scanning beam effect -->
+                <div class="scan-beam"></div>
+
+                <!-- Dimension labels -->
+                <span class="dim-label width">L: 12.45m</span>
+                <span class="dim-label height">H: 6.20m</span>
+                <span class="dim-label angle">∠ 35°</span>
+            </div>
+
+            <!-- Status footer -->
+            <div class="loader-footer">
+                <div class="status-row">
+                    <span class="status-label">LOAD_PROGRESS</span>
+                    <span class="status-value progress-percent">0.0%</span>
+                </div>
+                <div class="progress-track">
+                    <div class="progress-fill"></div>
+                </div>
+                <div class="system-log">INIT_SYSTEM_CORE...</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Preloader Script (loaded early, before main content) -->
+    <script src="js/preloader.js"></script>
 
     <!-- Global construction lines -->
     <div class="global-lines">
