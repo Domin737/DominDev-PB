@@ -225,6 +225,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileLinks = document.querySelectorAll('.mobile-menu__link, .mobile-menu__cta');
 
     if (hamburger && mobileMenu) {
+        const fabTop = document.querySelector('.fab-top');
+
         const toggleMenu = () => {
             const isActive = hamburger.classList.toggle('active');
             mobileMenu.classList.toggle('active');
@@ -234,8 +236,13 @@ document.addEventListener('DOMContentLoaded', () => {
             mobileMenu.setAttribute('aria-hidden', (!isActive).toString());
             hamburger.setAttribute('aria-label', isActive ? 'Zamknij menu' : 'Otwórz menu');
 
-            // Prevent body scroll when menu is open
-            document.body.style.overflow = isActive ? 'hidden' : '';
+            // Prevent body scroll when menu is open (using class for stronger lock)
+            document.documentElement.classList.toggle('mobile-menu-active', isActive);
+
+            // Hide scroll-to-top FAB when menu is open
+            if (fabTop) {
+                fabTop.classList.toggle('menu-hidden', isActive);
+            }
         };
 
         hamburger.addEventListener('click', toggleMenu);

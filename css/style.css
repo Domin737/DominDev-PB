@@ -47,6 +47,24 @@ html {
     scroll-behavior: smooth;
 }
 
+/* Scroll lock when mobile menu is active */
+html.mobile-menu-active,
+html.mobile-menu-active body {
+    overflow: hidden !important;
+    height: 100%;
+    touch-action: none;
+}
+
+/* Hide scrollbar when mobile menu is active */
+html.mobile-menu-active::-webkit-scrollbar {
+    display: none;
+}
+
+html.mobile-menu-active {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
 body {
     background-color: var(--paper);
     color: var(--ink);
@@ -190,6 +208,7 @@ body {
 }
 
 .brand-box {
+    position: relative;
     width: 40px;
     height: 40px;
     background: var(--ink);
@@ -200,6 +219,37 @@ body {
     font-family: var(--font-mono);
     font-weight: 700;
     font-size: 0.9rem;
+}
+
+/* Accent corner brackets (matching preloader logo) */
+.brand-box::before,
+.brand-box::after {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border: 2px solid var(--accent);
+    transition: all 0.3s var(--ease);
+}
+
+.brand-box::before {
+    top: -4px;
+    left: -4px;
+    border-right: none;
+    border-bottom: none;
+}
+
+.brand-box::after {
+    bottom: -4px;
+    right: -4px;
+    border-left: none;
+    border-top: none;
+}
+
+.nav-brand:hover .brand-box::before,
+.nav-brand:hover .brand-box::after {
+    width: 10px;
+    height: 10px;
 }
 
 .brand-info {
@@ -1426,6 +1476,13 @@ body {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
+}
+
+/* Hide FAB when mobile menu is open */
+.fab-top.menu-hidden {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none;
 }
 
 /* Focus states for accessibility */
