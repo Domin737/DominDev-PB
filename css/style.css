@@ -645,12 +645,6 @@ body {
     max-height: clamp(450px, 80vh, 750px);
     object-fit: contain;
     object-position: right bottom;
-    filter: grayscale(100%);
-    transition: filter var(--transition-slow);
-}
-
-.hero-visual:hover .hero-img {
-    filter: grayscale(0%);
 }
 
 /* ==========================================================================
@@ -662,17 +656,23 @@ body {
     height: 100%;
 }
 
-.hero-carousel .hero-img {
+.hero-carousel .hero-picture {
     position: absolute;
     top: 0;
     right: 0;
     opacity: 0;
     transition: opacity 2.5s ease-in-out;
+    display: block;
 }
 
-.hero-carousel .hero-img.active {
+.hero-carousel .hero-picture.active {
     opacity: 1;
     position: relative;
+}
+
+.hero-carousel .hero-picture .hero-img {
+    position: static;
+    opacity: 1;
 }
 
 
