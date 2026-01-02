@@ -273,6 +273,39 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ==========================================================================
+    // TECH GALLERY - LOAD MORE
+    // ==========================================================================
+    const techGallery = document.getElementById('tech-gallery');
+    const btnLoadMore = document.getElementById('btn-load-more');
+
+    if (techGallery && btnLoadMore) {
+        btnLoadMore.addEventListener('click', () => {
+            // Toggle expanded state
+            techGallery.classList.add('expanded');
+
+            // Update ARIA
+            btnLoadMore.setAttribute('aria-expanded', 'true');
+
+            // Hide button with animation
+            const btnContainer = btnLoadMore.closest('.tech-gallery__more');
+            if (btnContainer) {
+                btnContainer.style.opacity = '0';
+                setTimeout(() => {
+                    btnContainer.style.display = 'none';
+                }, 300);
+            }
+
+            // Re-trigger reveal animation for newly visible cards
+            const hiddenCards = techGallery.querySelectorAll('.tech-card:not(.visible)');
+            hiddenCards.forEach((card, i) => {
+                setTimeout(() => {
+                    card.classList.add('visible');
+                }, i * 100);
+            });
+        });
+    }
+
+    // ==========================================================================
     // FORM HANDLING
     // ==========================================================================
     const contactForm = document.getElementById('contact-form');
