@@ -437,6 +437,72 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ==========================================================================
+    // PRIVACY POLICY MODAL
+    // ==========================================================================
+    const privacyModal = document.getElementById('privacy-modal');
+    const privacyLink = document.querySelector('a[href="#privacy-modal"]');
+    const modalClose = privacyModal?.querySelector('.modal-close');
+    const modalOverlay = privacyModal?.querySelector('.modal-overlay');
+    const modalAccept = privacyModal?.querySelector('.modal-accept');
+
+    if (privacyModal && privacyLink) {
+        const openModal = (e) => {
+            e.preventDefault();
+            privacyModal.classList.add('is-open');
+            privacyModal.setAttribute('aria-hidden', 'false');
+            document.documentElement.classList.add('modal-open');
+
+            // Focus on close button for accessibility
+            modalClose?.focus();
+        };
+
+        const closeModal = () => {
+            privacyModal.classList.remove('is-open');
+            privacyModal.setAttribute('aria-hidden', 'true');
+            document.documentElement.classList.remove('modal-open');
+
+            // Return focus to trigger link
+            privacyLink.focus();
+        };
+
+        // Open modal
+        privacyLink.addEventListener('click', openModal);
+
+        // Close modal - X button
+        modalClose?.addEventListener('click', closeModal);
+
+        // Close modal - overlay click
+        modalOverlay?.addEventListener('click', closeModal);
+
+        // Close modal - accept button
+        modalAccept?.addEventListener('click', closeModal);
+
+        // Close modal - ESC key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && privacyModal.classList.contains('is-open')) {
+                closeModal();
+            }
+        });
+
+        // Trap focus inside modal
+        privacyModal.addEventListener('keydown', (e) => {
+            if (e.key !== 'Tab') return;
+
+            const focusable = privacyModal.querySelectorAll('button, [href], [tabindex]:not([tabindex="-1"])');
+            const first = focusable[0];
+            const last = focusable[focusable.length - 1];
+
+            if (e.shiftKey && document.activeElement === first) {
+                e.preventDefault();
+                last.focus();
+            } else if (!e.shiftKey && document.activeElement === last) {
+                e.preventDefault();
+                first.focus();
+            }
+        });
+    }
+
+    // ==========================================================================
     // SMOOTH SCROLL FOR ANCHOR LINKS
     // ==========================================================================
     const anchorLinks = document.querySelectorAll('a[href^="#"]');
@@ -445,7 +511,8 @@ document.addEventListener('DOMContentLoaded', () => {
         link.addEventListener('click', (e) => {
             const targetId = link.getAttribute('href');
 
-            if (targetId === '#') return;
+            // Skip empty, privacy modal, and non-section links
+            if (targetId === '#' || targetId === '#privacy-modal') return;
 
             const targetElement = document.querySelector(targetId);
 
