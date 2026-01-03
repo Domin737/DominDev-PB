@@ -1,0 +1,236 @@
+{
+  "meta": {
+    "lang": "nl",
+    "locale": "nl_NL",
+    "title": "PATRYK.BARABACH | Daksystemen | Polen & Nederland",
+    "description": "PATRYK.BARABACH - Dakbedekkingssystemen met technische precisie. Specialisatie: platte daken, industrieel, residentieel. Polen & Nederland.",
+    "og": {
+      "title": "PATRYK.BARABACH | Precisie Daksystemen",
+      "description": "Specialisatie: platte daken, industrieel, residentieel. 15 jaar ervaring, 10 jaar garantie. Polen & Nederland."
+    }
+  },
+  "nav": {
+    "oferta": "DIENSTEN",
+    "proces": "PROCES",
+    "specjalizacje": "EXPERTISE",
+    "cta": "OFFERTE AANVRAGEN",
+    "menuOpen": "Menu openen",
+    "menuClose": "Menu sluiten"
+  },
+  "hero": {
+    "est": "/// SINDS 2010",
+    "title": {
+      "line1": "DAK",
+      "line2": "SYSTEMEN",
+      "line3": "ARCHITECTUUR"
+    },
+    "subtitle": "Wij combineren dakdekkersvakmanschap met technische precisie. Gespecialiseerd in industriële objecten en moderne woningen.",
+    "coords": {
+      "label": "WROCLAW"
+    },
+    "cta": {
+      "primary": "OFFERTE AANVRAGEN",
+      "secondary": "Bekijk onze diensten"
+    }
+  },
+  "marquee": {
+    "innovation": "INNOVATIE",
+    "precision": "PRECISIE",
+    "warranty": "GARANTIE",
+    "timeliness": "STIPTHEID",
+    "eurocode": "EUROCODE NORMEN"
+  },
+  "trust": {
+    "header": "VERTROUWD DOOR",
+    "partner": "PARTNER",
+    "developer": "ONTWIKKELAAR",
+    "investor": "INVESTEERDER",
+    "general": "AANNEMERS"
+  },
+  "stats": {
+    "experience": {
+      "label": "ERVARING",
+      "unit": "JAAR"
+    },
+    "warranty": {
+      "label": "GARANTIE",
+      "unit": "JAAR"
+    },
+    "projects": {
+      "label": "VOLTOOID",
+      "unit": "PROJECTEN"
+    },
+    "quote": {
+      "label": "OFFERTE IN"
+    }
+  },
+  "oferta": {
+    "header": "ONZE DIENSTEN",
+    "items": {
+      "a01": {
+        "title": "PLATTE & INDUSTRIËLE DAKEN",
+        "desc": "Gespecialiseerd in grootschalige platte daken. Technologieën: EPDM-membranen, TPO/FPO, dubbellaags bitumen.",
+        "list": ["Magazijnhallen", "Commerciële gebouwen", "PIR-isolatie"]
+      },
+      "a02": {
+        "title": "HELLENDE DAKEN & WONINGEN",
+        "desc": "Complete spant- en dakoplossingen voor eengezinswoningen in \"Modern Barn\" stijl.",
+        "list": ["Vlakke keramische dakpannen", "Staand naad metaal", "Dakramen (warme installatie)"]
+      },
+      "a03": {
+        "title": "GEVELS & CNC METAALWERK",
+        "desc": "Eigen CNC-machinepark. Wij produceren nauwkeurige aansluitingen, dorpels en moderne ventilerende gevels.",
+        "list": ["Titaan-zink (Rheinzink, VMZinc)", "Composiet aluminium", "HPL/Trespa panelen", "Draagconstructies"]
+      }
+    }
+  },
+  "proces": {
+    "header": "ONS PROCES",
+    "steps": {
+      "p01": {
+        "title": "INSPECTIE",
+        "desc": "Gratis bezichtiging ter plaatse. Dakmeting met drone of traditioneel. Technische analyse en fotodocumentatie."
+      },
+      "p02": {
+        "title": "OFFERTE",
+        "desc": "Gedetailleerde offerte binnen 24 uur. Transparante uitsplitsing van materialen en arbeid. Budgetopties beschikbaar."
+      },
+      "p03": {
+        "title": "UITVOERING",
+        "desc": "Tijdige oplevering met documentatie. Dagelijkse voortgangsrapporten. Kwaliteitscontrole bij elke fase."
+      },
+      "p04": {
+        "title": "GARANTIE",
+        "desc": "120 maanden schriftelijke garantie. Gratis service-inspecties. Snelle reactie op meldingen."
+      }
+    }
+  },
+  "specjalizacje": {
+    "header": "ONZE EXPERTISE",
+    "showMore": "MEER TONEN",
+    "types": {
+      "standingSeam": "STAAND NAAD",
+      "epdm": "EPDM-MEMBRAAN",
+      "flatRoof": "PLAT DAK / BORSTWERING",
+      "tpo": "TPO-MEMBRAAN",
+      "titanZinc": "TITAAN-ZINK",
+      "bitumen": "BITUMEN DAKBEDEKKING"
+    },
+    "alts": {
+      "standingSeam": "Staand naad metalen dak",
+      "epdm": "EPDM-membraan dak",
+      "flatRoof": "Plat dak met borstwering",
+      "tpo": "TPO-membraan dak",
+      "titanZinc": "Titaan-zink metalen dak",
+      "bitumen": "Bitumen dakbedekking"
+    }
+  },
+  "kontakt": {
+    "header": "CONTACT",
+    "subtitle": "Of u nu een kant-en-klaar project heeft of nog aan het plannen bent — neem contact op. Gratis advies en offerte binnen 24 uur.",
+    "phone": "TELEFOON",
+    "email": "E-MAIL"
+  },
+  "form": {
+    "name": "Volledige naam",
+    "email": "E-mail (optioneel)",
+    "phone": "Telefoon",
+    "rodo": "Ik geef toestemming voor de verwerking van mijn persoonsgegevens voor het afhandelen van mijn aanvraag in overeenstemming met het",
+    "rodoLink": "Privacybeleid",
+    "submit": "OFFERTE AANVRAGEN",
+    "success": "Bedankt voor uw aanvraag! Wij nemen binnen 24 uur contact met u op.",
+    "error": "Corrigeer de fouten in het formulier.",
+    "validation": {
+      "nameRequired": "Vul uw naam in",
+      "phoneRequired": "Vul uw telefoonnummer in",
+      "phoneInvalid": "Ongeldig telefoonformaat",
+      "emailInvalid": "Ongeldig e-mailformaat",
+      "rodoRequired": "Toestemming voor gegevensverwerking is vereist"
+    }
+  },
+  "footer": {
+    "copyright": "2026 PATRYK.BARABACH",
+    "crafted": "CRAFTED WITH PRECISION // MADE IN EUROPE // POLAND",
+    "poweredBy": "Powered by Domin"
+  },
+  "accessibility": {
+    "scrollTop": "Scroll naar boven",
+    "call": "Bel ons",
+    "loading": "Pagina laden"
+  },
+  "privacy": {
+    "header": "PRIVACYBELEID",
+    "updated": "Laatst bijgewerkt: januari 2026",
+    "close": "Sluiten",
+    "accept": "IK BEGRIJP HET",
+    "sections": {
+      "admin": {
+        "title": "1. Verwerkingsverantwoordelijke",
+        "content": "De verwerkingsverantwoordelijke van uw persoonsgegevens is PATRYK BARABACH gevestigd in Polen."
+      },
+      "purpose": {
+        "title": "2. Doel van gegevensverwerking",
+        "intro": "Uw persoonsgegevens worden verwerkt voor:",
+        "list": [
+          "Afhandeling van offerte-aanvragen en vervolgcontact",
+          "Opstellen van offertes voor dakdekkersdiensten",
+          "Beantwoorden van vragen via het contactformulier"
+        ]
+      },
+      "legal": {
+        "title": "3. Rechtsgrondslag",
+        "intro": "Gegevensverwerking is gebaseerd op:",
+        "list": [
+          "Art. 6(1)(a) AVG – Uw toestemming",
+          "Art. 6(1)(b) AVG – Noodzaak voor contractuitvoering",
+          "Art. 6(1)(f) AVG – Gerechtvaardigde belangen van de verwerkingsverantwoordelijke"
+        ]
+      },
+      "retention": {
+        "title": "4. Bewaartermijn",
+        "content": "Gegevens worden bewaard voor de periode die nodig is om het doel te bereiken waarvoor ze zijn verzameld, en daarna voor de wettelijk vereiste periode of tot intrekking van toestemming."
+      },
+      "rights": {
+        "title": "5. Uw rechten",
+        "intro": "U heeft het recht om:",
+        "list": [
+          "Toegang tot uw persoonsgegevens",
+          "Rectificatie van onjuiste gegevens",
+          "Wissing van gegevens (\"recht om vergeten te worden\")",
+          "Beperking van verwerking",
+          "Gegevensoverdraagbaarheid",
+          "Bezwaar tegen verwerking",
+          "Toestemming te allen tijde in te trekken",
+          "Een klacht in te dienen bij een toezichthoudende autoriteit"
+        ]
+      },
+      "recipients": {
+        "title": "6. Ontvangers van gegevens",
+        "intro": "Uw gegevens kunnen worden gedeeld met:",
+        "list": [
+          "Hostingdienstverleners",
+          "IT en technische ondersteuningsproviders",
+          "Boekhoudkundige dienstverleners (bij contractuitvoering)"
+        ]
+      },
+      "cookies": {
+        "title": "7. Cookies",
+        "content": "De website kan cookies gebruiken voor een goede werking en verkeersanalyse. U kunt cookie-instellingen beheren in uw browser."
+      },
+      "contact": {
+        "title": "8. Contact",
+        "intro": "Voor zaken met betrekking tot bescherming van persoonsgegevens kunt u contact met ons opnemen:"
+      }
+    }
+  },
+  "error404": {
+    "title": "PAGINA NIET GEVONDEN",
+    "code": "404",
+    "message": "Het lijkt erop dat deze pagina niet bestaat of is verplaatst.",
+    "home": "NAAR HOMEPAGE"
+  },
+  "preloader": {
+    "tagline": "PRECISION ROOF SYSTEMS",
+    "progress": "LOAD_PROGRESS"
+  }
+}

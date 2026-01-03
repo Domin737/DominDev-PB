@@ -1,0 +1,236 @@
+{
+  "meta": {
+    "lang": "en",
+    "locale": "en_GB",
+    "title": "PATRYK.BARABACH | Roofing Systems | Poland",
+    "description": "PATRYK.BARABACH - Precision-engineered roofing systems. Specialization: flat roofs, industrial, residential. Wroclaw, Poland & Netherlands.",
+    "og": {
+      "title": "PATRYK.BARABACH | Precision-Engineered Roofing Systems",
+      "description": "Specialization: flat roofs, industrial, residential. 15 years of experience, 10-year warranty. Poland & Netherlands."
+    }
+  },
+  "nav": {
+    "oferta": "SERVICES",
+    "proces": "PROCESS",
+    "specjalizacje": "EXPERTISE",
+    "cta": "GET A QUOTE",
+    "menuOpen": "Open menu",
+    "menuClose": "Close menu"
+  },
+  "hero": {
+    "est": "/// EST. 2010",
+    "title": {
+      "line1": "ROOFING",
+      "line2": "SYSTEMS",
+      "line3": "ARCHITECTURE"
+    },
+    "subtitle": "We combine roofing craftsmanship with engineering precision. Specializing in industrial facilities and modern residences.",
+    "coords": {
+      "label": "WROCLAW"
+    },
+    "cta": {
+      "primary": "GET A QUOTE",
+      "secondary": "View our services"
+    }
+  },
+  "marquee": {
+    "innovation": "INNOVATION",
+    "precision": "PRECISION",
+    "warranty": "WARRANTY",
+    "timeliness": "TIMELINESS",
+    "eurocode": "EUROCODE STANDARDS"
+  },
+  "trust": {
+    "header": "TRUSTED BY",
+    "partner": "PARTNER",
+    "developer": "DEVELOPER",
+    "investor": "INVESTOR",
+    "general": "CONTRACTORS"
+  },
+  "stats": {
+    "experience": {
+      "label": "EXPERIENCE",
+      "unit": "YEARS"
+    },
+    "warranty": {
+      "label": "WARRANTY",
+      "unit": "YEARS"
+    },
+    "projects": {
+      "label": "COMPLETED",
+      "unit": "PROJECTS"
+    },
+    "quote": {
+      "label": "QUOTE IN"
+    }
+  },
+  "oferta": {
+    "header": "OUR SERVICES",
+    "items": {
+      "a01": {
+        "title": "FLAT & INDUSTRIAL ROOFS",
+        "desc": "Specializing in large-scale flat roofs. Technologies: EPDM membranes, TPO/FPO, double-layer torch-on felt.",
+        "list": ["Warehouse halls", "Commercial buildings", "PIR thermal insulation"]
+      },
+      "a02": {
+        "title": "PITCHED ROOFS & RESIDENCES",
+        "desc": "Complete truss and roofing solutions for single-family homes in the \"Modern Barn\" style.",
+        "list": ["Flat ceramic tiles", "Standing seam metal", "Roof windows (warm installation systems)"]
+      },
+      "a03": {
+        "title": "FACADES & CNC METALWORK",
+        "desc": "In-house CNC machinery. We manufacture precise flashings, sills, and modern ventilated facades.",
+        "list": ["Titanium-zinc (Rheinzink, VMZinc)", "Composite aluminum", "HPL/Trespa panels", "Substructure systems"]
+      }
+    }
+  },
+  "proces": {
+    "header": "OUR PROCESS",
+    "steps": {
+      "p01": {
+        "title": "SITE SURVEY",
+        "desc": "Free on-site consultation. Roof measurement by drone or traditional methods. Technical condition analysis and photo documentation."
+      },
+      "p02": {
+        "title": "QUOTATION",
+        "desc": "Detailed quote within 24h. Transparent breakdown of materials and labor. Budget options available."
+      },
+      "p03": {
+        "title": "EXECUTION",
+        "desc": "Timely completion with documentation. Daily progress reports. Quality control at every stage."
+      },
+      "p04": {
+        "title": "WARRANTY",
+        "desc": "120-month written warranty. Free service inspections. Quick response to claims."
+      }
+    }
+  },
+  "specjalizacje": {
+    "header": "OUR EXPERTISE",
+    "showMore": "SHOW MORE",
+    "types": {
+      "standingSeam": "STANDING SEAM",
+      "epdm": "EPDM MEMBRANE",
+      "flatRoof": "FLAT ROOF / PARAPET",
+      "tpo": "TPO MEMBRANE",
+      "titanZinc": "TITANIUM-ZINC",
+      "bitumen": "TORCH-ON BITUMEN"
+    },
+    "alts": {
+      "standingSeam": "Standing seam metal roof",
+      "epdm": "EPDM membrane roof",
+      "flatRoof": "Flat roof with parapet",
+      "tpo": "TPO membrane roof",
+      "titanZinc": "Titanium-zinc metal roof",
+      "bitumen": "Torch-on bitumen roof"
+    }
+  },
+  "kontakt": {
+    "header": "CONTACT",
+    "subtitle": "Whether you have a ready project or are just planning — get in touch. Free consultation and quote within 24h.",
+    "phone": "PHONE",
+    "email": "E-MAIL"
+  },
+  "form": {
+    "name": "Full Name",
+    "email": "E-mail (optional)",
+    "phone": "Phone",
+    "rodo": "I consent to the processing of my personal data for the purpose of handling my inquiry in accordance with the",
+    "rodoLink": "Privacy Policy",
+    "submit": "GET A QUOTE",
+    "success": "Thank you for your inquiry! We will contact you within 24h.",
+    "error": "Please correct the errors in the form.",
+    "validation": {
+      "nameRequired": "Please enter your name",
+      "phoneRequired": "Please enter your phone number",
+      "phoneInvalid": "Invalid phone format",
+      "emailInvalid": "Invalid email format",
+      "rodoRequired": "Consent to data processing is required"
+    }
+  },
+  "footer": {
+    "copyright": "2026 PATRYK.BARABACH",
+    "crafted": "CRAFTED WITH PRECISION // MADE IN EUROPE // POLAND",
+    "poweredBy": "Powered by Domin"
+  },
+  "accessibility": {
+    "scrollTop": "Scroll to top",
+    "call": "Call us",
+    "loading": "Loading page"
+  },
+  "privacy": {
+    "header": "PRIVACY POLICY",
+    "updated": "Last updated: January 2026",
+    "close": "Close",
+    "accept": "I UNDERSTAND",
+    "sections": {
+      "admin": {
+        "title": "1. Data Controller",
+        "content": "The controller of your personal data is PATRYK BARABACH based in Poland."
+      },
+      "purpose": {
+        "title": "2. Purpose of Data Processing",
+        "intro": "Your personal data is processed for the purpose of:",
+        "list": [
+          "Handling quote requests and follow-up contact",
+          "Preparing roofing service estimates",
+          "Responding to questions sent via the contact form"
+        ]
+      },
+      "legal": {
+        "title": "3. Legal Basis",
+        "intro": "Data processing is based on:",
+        "list": [
+          "Art. 6(1)(a) GDPR – Your consent",
+          "Art. 6(1)(b) GDPR – Necessity for contract performance",
+          "Art. 6(1)(f) GDPR – Legitimate interests of the controller"
+        ]
+      },
+      "retention": {
+        "title": "4. Retention Period",
+        "content": "Data is retained for the period necessary to achieve the purpose for which it was collected, and subsequently for the period required by law or until consent is withdrawn."
+      },
+      "rights": {
+        "title": "5. Your Rights",
+        "intro": "You have the right to:",
+        "list": [
+          "Access your personal data",
+          "Rectify inaccurate data",
+          "Erase data (\"right to be forgotten\")",
+          "Restrict processing",
+          "Data portability",
+          "Object to processing",
+          "Withdraw consent at any time",
+          "Lodge a complaint with a supervisory authority"
+        ]
+      },
+      "recipients": {
+        "title": "6. Data Recipients",
+        "intro": "Your data may be shared with:",
+        "list": [
+          "Hosting service providers",
+          "IT and technical support providers",
+          "Accounting service providers (in case of contract execution)"
+        ]
+      },
+      "cookies": {
+        "title": "7. Cookies",
+        "content": "The website may use cookies to ensure proper operation and traffic analysis. You can manage cookie settings in your browser."
+      },
+      "contact": {
+        "title": "8. Contact",
+        "intro": "For matters related to personal data protection, you can contact us:"
+      }
+    }
+  },
+  "error404": {
+    "title": "PAGE NOT FOUND",
+    "code": "404",
+    "message": "It looks like this page doesn't exist or has been moved.",
+    "home": "GO TO HOMEPAGE"
+  },
+  "preloader": {
+    "tagline": "PRECISION ROOF SYSTEMS",
+    "progress": "LOAD_PROGRESS"
+  }
+}

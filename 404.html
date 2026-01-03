@@ -12,6 +12,15 @@
     <!-- Theme Color -->
     <meta name="theme-color" content="#111111" />
 
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://patryk-barabach.pl/404.html" />
+
+    <!-- Alternate language versions -->
+    <link rel="alternate" hreflang="pl" href="https://patryk-barabach.pl/404.html" />
+    <link rel="alternate" hreflang="en" href="https://patryk-barabach.pl/404.html?lang=en" />
+    <link rel="alternate" hreflang="nl" href="https://patryk-barabach.pl/404.html?lang=nl" />
+    <link rel="alternate" hreflang="x-default" href="https://patryk-barabach.pl/404.html" />
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -119,11 +128,9 @@
       <nav class="error-nav">
         <a href="/" class="cad-btn">
           <span class="cad-btn-borders"></span>
-          <span class="cad-btn-text"
-            >STRONA GŁÓWNA <span class="arr">&nearr;</span></span
-          >
+          <span class="cad-btn-text"><span data-i18n="error404.home">STRONA GŁÓWNA</span> <span class="arr">&nearr;</span></span>
         </a>
-        <a href="tel:+48710000000" class="cad-btn primary">
+        <a href="tel:+48710000000" class="cad-btn primary" data-i18n-aria="accessibility.call">
           <span class="cad-btn-borders"></span>
           <span class="cad-btn-text">
             <svg
@@ -137,7 +144,7 @@
                 d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
               />
             </svg>
-            ZADZWOŃ
+            <span data-i18n="kontakt.phone">ZADZWOŃ</span>
           </span>
         </a>
       </nav>
@@ -146,7 +153,8 @@
     <!-- Analog grain texture overlay -->
     <div class="grain-overlay"></div>
 
-    <!-- Animation script -->
+    <!-- Scripts -->
+    <script src="js/i18n.js"></script>
     <script src="js/404.js"></script>
   </body>
 </html>

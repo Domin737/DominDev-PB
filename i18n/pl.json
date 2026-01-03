@@ -1,0 +1,236 @@
+{
+  "meta": {
+    "lang": "pl",
+    "locale": "pl_PL",
+    "title": "PATRYK.BARABACH | Systemy Dachowe | Wrocław",
+    "description": "PATRYK.BARABACH - Systemy dachowe z inżynierską precyzją. Specjalizacja: dachy płaskie, przemysłowe, rezydencje. Wrocław i okolice.",
+    "og": {
+      "title": "PATRYK.BARABACH | Systemy Dachowe z Inżynierską Precyzją",
+      "description": "Specjalizacja: dachy płaskie, przemysłowe, rezydencje. 15 lat doświadczenia, 10 lat gwarancji. Wrocław i okolice."
+    }
+  },
+  "nav": {
+    "oferta": "OFERTA",
+    "proces": "PROCES",
+    "specjalizacje": "SPECJALIZACJE",
+    "cta": "ZAMÓW WYCENĘ",
+    "menuOpen": "Otwórz menu",
+    "menuClose": "Zamknij menu"
+  },
+  "hero": {
+    "est": "/// EST. 2010",
+    "title": {
+      "line1": "ARCHITEKTURA",
+      "line2": "POKRYĆ",
+      "line3": "DACHOWYCH"
+    },
+    "subtitle": "Łączymy rzemiosło dekarskie z inżynierską precyzją. Specjalizacja: obiekty przemysłowe i nowoczesne rezydencje.",
+    "coords": {
+      "label": "WROCLAW"
+    },
+    "cta": {
+      "primary": "ZAMÓW WYCENĘ",
+      "secondary": "Zobacz naszą ofertę"
+    }
+  },
+  "marquee": {
+    "innovation": "INNOWACYJNOŚĆ",
+    "precision": "PRECYZJA",
+    "warranty": "GWARANCJA",
+    "timeliness": "TERMINOWOŚĆ",
+    "eurocode": "NORMY EUROCODE"
+  },
+  "trust": {
+    "header": "ZAUFALI NAM",
+    "partner": "PARTNER",
+    "developer": "DEVELOPER",
+    "investor": "INWESTOR",
+    "general": "GENERALNI"
+  },
+  "stats": {
+    "experience": {
+      "label": "DOŚWIADCZENIE",
+      "unit": "LAT"
+    },
+    "warranty": {
+      "label": "GWARANCJA",
+      "unit": "LAT"
+    },
+    "projects": {
+      "label": "REALIZACJE",
+      "unit": "PROJEKTÓW"
+    },
+    "quote": {
+      "label": "WYCENA"
+    }
+  },
+  "oferta": {
+    "header": "OBSZARY DZIAŁANIA",
+    "items": {
+      "a01": {
+        "title": "DACHY PŁASKIE & PRZEMYSŁOWE",
+        "desc": "Specjalizacja w wielkopowierzchniowych dachach płaskich. Technologie: Membrany EPDM, TPO/FPO, Papa termozgrzewalna dwuwarstwowa.",
+        "list": ["Hale magazynowe", "Obiekty handlowe", "Termoizolacja PIR"]
+      },
+      "a02": {
+        "title": "DACHY SKOŚNE & REZYDENCJE",
+        "desc": "Kompleksowe wykonawstwo więźby i pokrycia dla domów jednorodzinnych typu \"Modern Barn\".",
+        "list": ["Dachówka ceramiczna płaska", "Blacha na rąbek stojący", "Okna dachowe (systemy ciepłego montażu)"]
+      },
+      "a03": {
+        "title": "FASADY & OBRÓBKI CNC",
+        "desc": "Własny park maszynowy CNC. Wykonujemy precyzyjne opierzenia, parapety i nowoczesne elewacje wentylowane.",
+        "list": ["Tytan-cynk (Rheinzink, VMZinc)", "Aluminium kompozytowe", "Panele HPL/Trespa", "Systemy podkonstrukcji"]
+      }
+    }
+  },
+  "proces": {
+    "header": "PROCES REALIZACJI",
+    "steps": {
+      "p01": {
+        "title": "INWENTARYZACJA",
+        "desc": "Bezpłatna wizja lokalna. Pomiar dachu dronem lub tradycyjnie. Analiza stanu technicznego i dokumentacja fotograficzna."
+      },
+      "p02": {
+        "title": "KOSZTORYS",
+        "desc": "Szczegółowa wycena w 24h. Transparentny podział na materiały i robociznę. Warianty budżetowe do wyboru."
+      },
+      "p03": {
+        "title": "REALIZACJA",
+        "desc": "Terminowe wykonanie z dokumentacją. Codzienny raport postępu prac. Kontrola jakości na każdym etapie."
+      },
+      "p04": {
+        "title": "GWARANCJA",
+        "desc": "120 miesięcy gwarancji pisemnej. Bezpłatne przeglądy serwisowe. Szybka reakcja na zgłoszenia."
+      }
+    }
+  },
+  "specjalizacje": {
+    "header": "NASZE SPECJALIZACJE",
+    "showMore": "POKAŻ WIĘCEJ",
+    "types": {
+      "standingSeam": "BLACHA NA RĄBEK",
+      "epdm": "MEMBRANA EPDM",
+      "flatRoof": "DACH PŁASKI / ATTYKA",
+      "tpo": "MEMBRANA TPO",
+      "titanZinc": "TYTAN-CYNK",
+      "bitumen": "PAPA TERMOZGRZEWALNA"
+    },
+    "alts": {
+      "standingSeam": "Dach z blachy na rąbek stojący",
+      "epdm": "Dach z membraną EPDM",
+      "flatRoof": "Dach płaski z attyką",
+      "tpo": "Dach z membraną TPO",
+      "titanZinc": "Dach z blachy tytan-cynk",
+      "bitumen": "Dach z papą termozgrzewalną"
+    }
+  },
+  "kontakt": {
+    "header": "KONTAKT",
+    "subtitle": "Niezależnie czy masz gotowy projekt, czy dopiero planujesz — skontaktuj się. Bezpłatna konsultacja i kosztorys w 24h.",
+    "phone": "TELEFON",
+    "email": "E-MAIL"
+  },
+  "form": {
+    "name": "Imię i Nazwisko",
+    "email": "E-mail (opcjonalnie)",
+    "phone": "Telefon",
+    "rodo": "Wyrażam zgodę na przetwarzanie moich danych osobowych w celu realizacji zapytania zgodnie z",
+    "rodoLink": "Polityką Prywatności",
+    "submit": "ZAMÓW WYCENĘ",
+    "success": "Dziękujemy za zgłoszenie! Skontaktujemy się w ciągu 24h.",
+    "error": "Popraw błędy w formularzu.",
+    "validation": {
+      "nameRequired": "Podaj imię i nazwisko",
+      "phoneRequired": "Podaj numer telefonu",
+      "phoneInvalid": "Nieprawidłowy format numeru",
+      "emailInvalid": "Nieprawidłowy format e-mail",
+      "rodoRequired": "Wymagana zgoda na przetwarzanie danych"
+    }
+  },
+  "footer": {
+    "copyright": "2026 PATRYK.BARABACH",
+    "crafted": "CRAFTED WITH PRECISION // MADE IN EUROPE // POLAND",
+    "poweredBy": "Powered by Domin"
+  },
+  "accessibility": {
+    "scrollTop": "Przewiń do góry",
+    "call": "Zadzwoń do nas",
+    "loading": "Ładowanie strony"
+  },
+  "privacy": {
+    "header": "POLITYKA PRYWATNOŚCI",
+    "updated": "Ostatnia aktualizacja: Styczeń 2026",
+    "close": "Zamknij",
+    "accept": "ROZUMIEM",
+    "sections": {
+      "admin": {
+        "title": "1. Administrator danych",
+        "content": "Administratorem Twoich danych osobowych jest PATRYK BARABACH z siedzibą w Polsce."
+      },
+      "purpose": {
+        "title": "2. Cel przetwarzania danych",
+        "intro": "Twoje dane osobowe przetwarzane są w celu:",
+        "list": [
+          "Realizacji zapytań ofertowych i kontaktu zwrotnego",
+          "Przygotowania wyceny usług dekarskich",
+          "Odpowiedzi na pytania przesłane przez formularz kontaktowy"
+        ]
+      },
+      "legal": {
+        "title": "3. Podstawa prawna",
+        "intro": "Przetwarzanie danych odbywa się na podstawie:",
+        "list": [
+          "Art. 6 ust. 1 lit. a RODO – Twoja zgoda",
+          "Art. 6 ust. 1 lit. b RODO – niezbędność do wykonania umowy",
+          "Art. 6 ust. 1 lit. f RODO – prawnie uzasadniony interes administratora"
+        ]
+      },
+      "retention": {
+        "title": "4. Okres przechowywania",
+        "content": "Dane przechowywane są przez okres niezbędny do realizacji celu, dla którego zostały zebrane, a następnie przez okres wymagany przepisami prawa lub do momentu wycofania zgody."
+      },
+      "rights": {
+        "title": "5. Twoje prawa",
+        "intro": "Przysługuje Ci prawo do:",
+        "list": [
+          "Dostępu do swoich danych osobowych",
+          "Sprostowania nieprawidłowych danych",
+          "Usunięcia danych (\"prawo do bycia zapomnianym\")",
+          "Ograniczenia przetwarzania",
+          "Przenoszenia danych",
+          "Wniesienia sprzeciwu wobec przetwarzania",
+          "Cofnięcia zgody w dowolnym momencie",
+          "Wniesienia skargi do organu nadzorczego (UODO)"
+        ]
+      },
+      "recipients": {
+        "title": "6. Odbiorcy danych",
+        "intro": "Twoje dane mogą być przekazywane:",
+        "list": [
+          "Dostawcom usług hostingowych",
+          "Dostawcom usług IT i wsparcia technicznego",
+          "Podmiotom świadczącym usługi księgowe (w przypadku realizacji umowy)"
+        ]
+      },
+      "cookies": {
+        "title": "7. Pliki cookies",
+        "content": "Strona może wykorzystywać pliki cookies w celu zapewnienia prawidłowego działania serwisu oraz analizy ruchu. Możesz zarządzać ustawieniami cookies w swojej przeglądarce."
+      },
+      "contact": {
+        "title": "8. Kontakt",
+        "intro": "W sprawach związanych z ochroną danych osobowych możesz skontaktować się z nami:"
+      }
+    }
+  },
+  "error404": {
+    "title": "STRONA NIE ZNALEZIONA",
+    "code": "404",
+    "message": "Wygląda na to, że ta strona nie istnieje lub została przeniesiona.",
+    "home": "STRONA GŁÓWNA"
+  },
+  "preloader": {
+    "tagline": "PRECISION ROOF SYSTEMS",
+    "progress": "LOAD_PROGRESS"
+  }
+}
