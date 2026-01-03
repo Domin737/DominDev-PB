@@ -199,17 +199,36 @@ const I18n = (function() {
      * Update language switcher UI state
      */
     function updateLangSwitcher() {
-        // Update current language display
+        // Update current language display (old dropdown style)
         document.querySelectorAll('.lang-switch__current').forEach(el => {
             el.textContent = currentLang.toUpperCase();
         });
 
-        // Update aria-selected states in dropdown
+        // Update aria-selected states in dropdown (old style)
         document.querySelectorAll('.lang-switch__dropdown button[data-lang]').forEach(btn => {
             const isActive = btn.getAttribute('data-lang') === currentLang;
             btn.setAttribute('aria-selected', isActive.toString());
             btn.classList.toggle('is-active', isActive);
         });
+
+        // Update inline toggle buttons (new style - hero coords, footer)
+        document.querySelectorAll('.lang-toggle[data-lang]').forEach(btn => {
+            const isActive = btn.getAttribute('data-lang') === currentLang;
+            btn.setAttribute('aria-pressed', isActive.toString());
+            btn.classList.toggle('is-active', isActive);
+        });
+
+        // Update FAB language display
+        document.querySelectorAll('.fab-lang-current').forEach(el => {
+            el.textContent = currentLang.toUpperCase();
+        });
+
+        // Update FAB dropdown buttons
+        document.querySelectorAll('.fab-lang-dropdown button[data-lang]').forEach(btn => {
+            const isActive = btn.getAttribute('data-lang') === currentLang;
+            btn.classList.toggle('is-active', isActive);
+        });
+
     }
 
     /**
@@ -240,6 +259,7 @@ const I18n = (function() {
      * Initialize dropdown toggle behavior
      */
     function initDropdowns() {
+        // Old dropdown style (if still present)
         document.querySelectorAll('.lang-switch').forEach(switcher => {
             const toggle = switcher.querySelector('.lang-switch__toggle');
             const dropdown = switcher.querySelector('.lang-switch__dropdown');
@@ -285,12 +305,75 @@ const I18n = (function() {
             });
         });
 
-        // Close dropdown when clicking outside
+        // New inline toggle buttons (hero coords, footer)
+        document.querySelectorAll('.lang-toggle[data-lang]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const lang = btn.getAttribute('data-lang');
+                setLanguage(lang);
+            });
+        });
+
+        // FAB language button
+        const fabLangContainer = document.querySelector('.fab-lang-container');
+        const fabLang = document.querySelector('.fab-lang');
+        const fabLangDropdown = document.querySelector('.fab-lang-dropdown');
+
+        if (fabLang && fabLangDropdown) {
+            // Toggle FAB dropdown
+            fabLang.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isOpen = fabLangContainer.classList.contains('is-open');
+
+                if (isOpen) {
+                    fabLangContainer.classList.remove('is-open');
+                    fabLang.setAttribute('aria-expanded', 'false');
+                    fabLangDropdown.setAttribute('aria-hidden', 'true');
+                } else {
+                    fabLangContainer.classList.add('is-open');
+                    fabLang.setAttribute('aria-expanded', 'true');
+                    fabLangDropdown.setAttribute('aria-hidden', 'false');
+                }
+            });
+
+            // Handle FAB dropdown language selection
+            fabLangDropdown.querySelectorAll('button[data-lang]').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const lang = btn.getAttribute('data-lang');
+                    setLanguage(lang);
+
+                    // Close FAB dropdown
+                    fabLangContainer.classList.remove('is-open');
+                    fabLang.setAttribute('aria-expanded', 'false');
+                    fabLangDropdown.setAttribute('aria-hidden', 'true');
+                });
+            });
+
+            // Keyboard navigation for FAB
+            fabLangContainer.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && fabLangContainer.classList.contains('is-open')) {
+                    fabLangContainer.classList.remove('is-open');
+                    fabLang.setAttribute('aria-expanded', 'false');
+                    fabLangDropdown.setAttribute('aria-hidden', 'true');
+                    fabLang.focus();
+                }
+            });
+        }
+
+        // Close all dropdowns when clicking outside
         document.addEventListener('click', () => {
+            // Close old dropdowns
             document.querySelectorAll('.lang-switch.is-open').forEach(s => {
                 s.classList.remove('is-open');
-                s.querySelector('.lang-switch__toggle').setAttribute('aria-expanded', 'false');
+                const toggle = s.querySelector('.lang-switch__toggle');
+                if (toggle) toggle.setAttribute('aria-expanded', 'false');
             });
+
+            // Close FAB dropdown
+            if (fabLangContainer && fabLangContainer.classList.contains('is-open')) {
+                fabLangContainer.classList.remove('is-open');
+                if (fabLang) fabLang.setAttribute('aria-expanded', 'false');
+                if (fabLangDropdown) fabLangDropdown.setAttribute('aria-hidden', 'true');
+            }
         });
     }
 

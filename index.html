@@ -264,21 +264,6 @@
         </a>
       </div>
 
-      <!-- Language Switcher (desktop) -->
-      <div class="lang-switch desktop-only">
-        <button class="lang-switch__toggle" aria-expanded="false" aria-haspopup="listbox">
-          <span class="lang-switch__current">PL</span>
-          <svg class="lang-switch__arrow" width="10" height="6" viewBox="0 0 10 6" fill="none">
-            <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
-        <ul class="lang-switch__dropdown" role="listbox">
-          <li><button data-lang="pl" aria-selected="true">PL — Polski</button></li>
-          <li><button data-lang="en" aria-selected="false">EN — English</button></li>
-          <li><button data-lang="nl" aria-selected="false">NL — Nederlands</button></li>
-        </ul>
-      </div>
-
       <!-- Hamburger button (mobile) -->
       <button class="hamburger" aria-label="Otwórz menu" aria-expanded="false" data-i18n-aria="nav.menuOpen">
         <span class="hamburger-line"></span>
@@ -298,21 +283,6 @@
     <!-- Mobile menu overlay -->
     <div class="mobile-menu" aria-hidden="true">
       <div class="mobile-menu__inner">
-        <!-- Language Switcher (mobile) -->
-        <div class="lang-switch mobile-menu__lang">
-          <button class="lang-switch__toggle" aria-expanded="false" aria-haspopup="listbox">
-            <span class="lang-switch__current">PL</span>
-            <svg class="lang-switch__arrow" width="10" height="6" viewBox="0 0 10 6" fill="none">
-              <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </button>
-          <ul class="lang-switch__dropdown" role="listbox">
-            <li><button data-lang="pl" aria-selected="true">PL — Polski</button></li>
-            <li><button data-lang="en" aria-selected="false">EN — English</button></li>
-            <li><button data-lang="nl" aria-selected="false">NL — Nederlands</button></li>
-          </ul>
-        </div>
-
         <a href="#oferta" class="mobile-menu__link" data-index="01" data-i18n="nav.oferta">OFERTA</a>
         <a href="#proces" class="mobile-menu__link" data-index="02" data-i18n="nav.proces">PROCES</a>
         <a href="#specjalizacje" class="mobile-menu__link" data-index="03" data-i18n="nav.specjalizacje">SPECJALIZACJE</a>
@@ -1028,6 +998,16 @@
             ><span data-i18n="footer.poweredBy">Powered by Domin</span><span class="accent">Dev</span></a
           >
         </div>
+        <div class="f-center">
+          <div class="footer-lang">
+            <span class="footer-lang-label">LANG:</span>
+            <button class="lang-toggle" data-lang="pl" aria-pressed="true">PL</button>
+            <span class="lang-sep">/</span>
+            <button class="lang-toggle" data-lang="en" aria-pressed="false">EN</button>
+            <span class="lang-sep">/</span>
+            <button class="lang-toggle" data-lang="nl" aria-pressed="false">NL</button>
+          </div>
+        </div>
         <div class="f-right">
           <a href="#" aria-label="Facebook">FB</a> /
           <a href="#" aria-label="Instagram">IG</a> /
@@ -1035,6 +1015,21 @@
         </div>
       </div>
     </footer>
+
+    <!-- Language FAB (left side, mobile-first) -->
+    <div class="fab-lang-container">
+      <button class="fab fab-lang" aria-label="Zmień język" type="button" aria-expanded="false">
+        <span class="fab-shadow"></span>
+        <span class="fab-face">
+          <span class="fab-lang-current">PL</span>
+        </span>
+      </button>
+      <div class="fab-lang-dropdown" aria-hidden="true">
+        <button data-lang="pl" class="is-active">PL</button>
+        <button data-lang="en">EN</button>
+        <button data-lang="nl">NL</button>
+      </div>
+    </div>
 
     <!-- Floating Action Buttons -->
     <div class="fab-container">

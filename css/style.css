@@ -1618,6 +1618,14 @@ body {
         display: none;
     }
 
+    .nav-actions {
+        display: none;
+    }
+
+    .nav-lang-container {
+        display: none;
+    }
+
     .brand-meta {
         display: none;
     }
@@ -1891,21 +1899,64 @@ body {
         gap: 5px;
     }
 
-    /* FAB - compact size on small mobile */
+    /* FAB - compact size on small mobile (42px) */
     .fab-container {
         bottom: 15px;
         right: 15px;
-        gap: 12px;
+        gap: 10px;
     }
 
     .fab-face {
-        width: 50px;
-        height: 50px;
+        width: 42px;
+        height: 42px;
     }
 
     .fab-face svg {
-        width: 20px;
-        height: 20px;
+        width: 18px;
+        height: 18px;
+    }
+
+    .fab-shadow {
+        top: 3px;
+        left: 3px;
+    }
+
+    .fab:hover .fab-face {
+        transform: translate(3px, 3px);
+    }
+
+    /* FAB Language - compact size (42px) */
+    .fab-lang-container {
+        left: 15px;
+        bottom: 15px;
+    }
+
+    .fab-lang .fab-face {
+        width: 42px;
+        height: 42px;
+    }
+
+    .fab-lang .fab-shadow {
+        top: 3px;
+        left: 3px;
+    }
+
+    .fab-lang:hover .fab-face {
+        transform: translate(3px, 3px);
+    }
+
+    .fab-lang-current {
+        font-size: 0.7rem;
+    }
+
+    .fab-lang-dropdown {
+        width: 42px;
+    }
+
+    .fab-lang-dropdown button {
+        width: 42px;
+        padding: 8px 0;
+        font-size: 0.65rem;
     }
 }
 
@@ -1931,10 +1982,15 @@ body {
         font-size: 0.9rem;
     }
 
-    /* FAB - even smaller on extra small screens */
+    /* FAB - same 42px on extra small screens */
     .fab-face {
-        width: 46px;
-        height: 46px;
+        width: 42px;
+        height: 42px;
+    }
+
+    .fab-lang .fab-face {
+        width: 42px;
+        height: 42px;
     }
 }
 
@@ -2346,4 +2402,287 @@ body.i18n-ready [data-i18n],
 body.i18n-ready [data-i18n-html] {
     opacity: 1;
     transition: opacity 0.15s ease;
+}
+
+/* ==========================================================================
+   LANGUAGE SWITCHER - NEW DESIGN (System Config Style)
+   ========================================================================== */
+
+/* Hero coords - hide language switcher (moved to nav desktop / FAB mobile) */
+.coord-divider {
+    display: none;
+}
+
+.lang-inline {
+    display: none;
+}
+
+/* Footer language toggle styles (reused from .lang-toggle) */
+.lang-toggle {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 400;
+    color: var(--text-secondary);
+    background: transparent;
+    border: none;
+    padding: 2px 4px;
+    cursor: pointer;
+    transition: color var(--transition-fast), background var(--transition-fast);
+    letter-spacing: 0.5px;
+}
+
+.lang-toggle:hover {
+    color: var(--ink);
+    background: var(--paper-hover);
+}
+
+.lang-toggle[aria-pressed="true"],
+.lang-toggle.is-active {
+    color: var(--accent);
+    font-weight: 700;
+}
+
+.lang-toggle:focus-visible {
+    outline: 1px solid var(--accent);
+    outline-offset: 2px;
+}
+
+.lang-sep {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--line);
+    font-weight: 300;
+}
+
+/* Footer language switcher */
+.footer-lang {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.footer-lang-label {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    font-weight: 400;
+    color: var(--text-secondary);
+    margin-right: 0.25rem;
+    letter-spacing: 0.5px;
+}
+
+.footer-lang .lang-toggle {
+    font-size: 0.65rem;
+}
+
+.footer-lang .lang-sep {
+    font-size: 0.65rem;
+}
+
+/* Footer layout update */
+.footer-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.f-center {
+    order: 2;
+}
+
+@media (max-width: 768px) {
+    .footer-flex {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .f-center {
+        order: 0;
+        width: 100%;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid var(--line-light);
+        margin-bottom: 0.5rem;
+    }
+
+    .footer-lang {
+        justify-content: center;
+    }
+}
+
+/* ==========================================================================
+   LANGUAGE FAB (Floating Action Button - Left Side, same style as scroll-to-top)
+   ========================================================================== */
+.fab-lang-container {
+    position: fixed;
+    left: 30px;
+    bottom: 30px;
+    z-index: 1000;
+    display: block; /* Visible on all devices */
+}
+
+/* Use same FAB structure as scroll-to-top */
+.fab-lang {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+}
+
+.fab-lang .fab-shadow {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 100%;
+    height: 100%;
+    border: 1px solid var(--ink);
+    background: var(--paper);
+    pointer-events: none;
+    transition: background var(--transition-medium);
+}
+
+.fab-lang .fab-face {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    background: var(--ink);
+    color: var(--paper);
+    transition: transform var(--transition-medium) var(--ease),
+                background var(--transition-medium),
+                color var(--transition-medium);
+}
+
+.fab-lang:hover .fab-face {
+    transform: translate(4px, 4px);
+    background: var(--paper);
+    color: var(--ink);
+    box-shadow: inset 0 0 0 1px var(--accent);
+}
+
+.fab-lang:hover .fab-shadow {
+    background: var(--ink);
+}
+
+.fab-lang:focus {
+    outline: none;
+}
+
+.fab-lang:focus-visible .fab-face {
+    box-shadow: inset 0 0 0 2px var(--accent);
+}
+
+.fab-lang-current {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+/* FAB Language Dropdown */
+.fab-lang-dropdown {
+    position: absolute;
+    bottom: calc(100% + 12px);
+    left: 0;
+    background: var(--paper);
+    border: 1px solid var(--ink);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(8px);
+    transition: opacity var(--transition-fast),
+                visibility var(--transition-fast),
+                transform var(--transition-fast);
+    box-shadow: 4px 4px 0 0 var(--ink);
+}
+
+.fab-lang-container.is-open .fab-lang-dropdown,
+.fab-lang[aria-expanded="true"] + .fab-lang-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.fab-lang-dropdown button {
+    display: block;
+    width: 56px;
+    padding: 12px 0;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--line);
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: background var(--transition-fast),
+                color var(--transition-fast);
+    text-align: center;
+}
+
+.fab-lang-dropdown button:last-child {
+    border-bottom: none;
+}
+
+.fab-lang-dropdown button:hover {
+    background: var(--ink);
+    color: var(--paper);
+}
+
+.fab-lang-dropdown button.is-active {
+    color: var(--accent);
+    font-weight: 700;
+}
+
+.fab-lang-dropdown button:focus-visible {
+    outline: none;
+    background: var(--ink);
+    color: var(--paper);
+}
+
+/* Mobile: adjust position and size */
+@media (max-width: 768px) {
+    .fab-lang-container {
+        left: 20px;
+        bottom: 20px;
+    }
+
+    .fab-lang .fab-face {
+        width: 42px;
+        height: 42px;
+    }
+
+    .fab-lang .fab-shadow {
+        top: 3px;
+        left: 3px;
+    }
+
+    .fab-lang:hover .fab-face {
+        transform: translate(3px, 3px);
+    }
+
+    .fab-lang-current {
+        font-size: 0.7rem;
+    }
+
+    .fab-lang-dropdown {
+        width: 42px;
+    }
+
+    .fab-lang-dropdown button {
+        width: 42px;
+        padding: 8px 0;
+        font-size: 0.65rem;
+    }
+}
+
+/* Safe area for mobile devices with notch/home indicator */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+    @media (max-width: 768px) {
+        .fab-lang-container {
+            bottom: calc(15px + env(safe-area-inset-bottom));
+        }
+    }
 }
