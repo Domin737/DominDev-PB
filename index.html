@@ -770,7 +770,7 @@
                     </div>
                     <div class="checkbox-wrap">
                         <input type="checkbox" id="rodo" name="rodo" required aria-required="true">
-                        <label for="rodo">Wyrażam zgodę na przetwarzanie moich danych osobowych w celu realizacji zapytania zgodnie z <a href="#" target="_blank">Polityką Prywatności</a>.</label>
+                        <label for="rodo">Wyrażam zgodę na przetwarzanie moich danych osobowych w celu realizacji zapytania zgodnie z <a href="#privacy-modal">Polityką Prywatności</a>.</label>
                     </div>
                     <button type="submit" class="cad-btn">
                         <span class="cad-btn-borders"></span>
@@ -813,6 +813,88 @@
                 </svg>
             </span>
         </a>
+    </div>
+
+    <!-- Privacy Policy Modal -->
+    <div id="privacy-modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="modal-overlay"></div>
+        <div class="modal-container">
+            <div class="modal-header">
+                <div class="modal-title-wrap">
+                    <span class="mono-idx">RODO</span>
+                    <h2 id="modal-title" class="modal-title">POLITYKA PRYWATNOŚCI</h2>
+                </div>
+                <button type="button" class="modal-close" aria-label="Zamknij">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 6L6 18M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p class="privacy-meta">Ostatnia aktualizacja: Styczeń 2026</p>
+
+                <h3>1. Administrator danych</h3>
+                <p>Administratorem Twoich danych osobowych jest PATRYK BARABACH z siedzibą w Polsce.</p>
+                <!-- TODO: Uzupełnić pełne dane kontaktowe administratora -->
+
+                <h3>2. Cel przetwarzania danych</h3>
+                <p>Twoje dane osobowe przetwarzane są w celu:</p>
+                <ul>
+                    <li>Realizacji zapytań ofertowych i kontaktu zwrotnego</li>
+                    <li>Przygotowania wyceny usług dekarskich</li>
+                    <li>Odpowiedzi na pytania przesłane przez formularz kontaktowy</li>
+                </ul>
+
+                <h3>3. Podstawa prawna</h3>
+                <p>Przetwarzanie danych odbywa się na podstawie:</p>
+                <ul>
+                    <li>Art. 6 ust. 1 lit. a RODO – Twoja zgoda</li>
+                    <li>Art. 6 ust. 1 lit. b RODO – niezbędność do wykonania umowy</li>
+                    <li>Art. 6 ust. 1 lit. f RODO – prawnie uzasadniony interes administratora</li>
+                </ul>
+
+                <h3>4. Okres przechowywania</h3>
+                <p>Dane przechowywane są przez okres niezbędny do realizacji celu, dla którego zostały zebrane, a następnie przez okres wymagany przepisami prawa lub do momentu wycofania zgody.</p>
+
+                <h3>5. Twoje prawa</h3>
+                <p>Przysługuje Ci prawo do:</p>
+                <ul>
+                    <li>Dostępu do swoich danych osobowych</li>
+                    <li>Sprostowania nieprawidłowych danych</li>
+                    <li>Usunięcia danych („prawo do bycia zapomnianym")</li>
+                    <li>Ograniczenia przetwarzania</li>
+                    <li>Przenoszenia danych</li>
+                    <li>Wniesienia sprzeciwu wobec przetwarzania</li>
+                    <li>Cofnięcia zgody w dowolnym momencie</li>
+                    <li>Wniesienia skargi do organu nadzorczego (UODO)</li>
+                </ul>
+
+                <h3>6. Odbiorcy danych</h3>
+                <p>Twoje dane mogą być przekazywane:</p>
+                <ul>
+                    <li>Dostawcom usług hostingowych</li>
+                    <li>Dostawcom usług IT i wsparcia technicznego</li>
+                    <li>Podmiotom świadczącym usługi księgowe (w przypadku realizacji umowy)</li>
+                </ul>
+
+                <h3>7. Pliki cookies</h3>
+                <p>Strona może wykorzystywać pliki cookies w celu zapewnienia prawidłowego działania serwisu oraz analizy ruchu. Możesz zarządzać ustawieniami cookies w swojej przeglądarce.</p>
+
+                <h3>8. Kontakt</h3>
+                <p>W sprawach związanych z ochroną danych osobowych możesz skontaktować się z nami:</p>
+                <ul>
+                    <li>Email: biuro@patryk-barabach.pl</li>
+                    <li>Telefon: +48 71 000 00 00</li>
+                </ul>
+                <!-- TODO: Uzupełnić prawdziwe dane kontaktowe -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="cad-btn modal-accept">
+                    <span class="cad-btn-borders"></span>
+                    <span class="cad-btn-text">ROZUMIEM</span>
+                </button>
+            </div>
+        </div>
     </div>
 
     <!-- Scripts -->
