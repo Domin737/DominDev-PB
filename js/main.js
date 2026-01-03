@@ -22,16 +22,28 @@ document.addEventListener('DOMContentLoaded', () => {
     // SCROLL PROGRESS INDICATOR
     // ==========================================================================
     const progressLine = document.querySelector('.scroll-progress');
+    const footer = document.querySelector('.main-footer');
 
-    if (progressLine) {
+    if (progressLine && footer) {
         const updateProgress = () => {
             const scrolled = window.scrollY;
-            const maxScroll = document.body.scrollHeight - window.innerHeight;
-            const percentage = maxScroll > 0 ? (scrolled / maxScroll) * 100 : 0;
-            progressLine.style.height = `${percentage}%`;
+            const viewportHeight = window.innerHeight;
+            const footerTop = footer.offsetTop;
+
+            // Max scroll point is when footer top reaches viewport bottom
+            const maxScroll = footerTop - viewportHeight;
+
+            // Calculate progress (0 to 1) based on scroll position
+            const progress = maxScroll > 0 ? Math.min(scrolled / maxScroll, 1) : 1;
+
+            // Line height grows from 0 to viewport height based on progress
+            const lineHeight = progress * viewportHeight;
+
+            progressLine.style.height = `${Math.max(0, lineHeight)}px`;
         };
 
         window.addEventListener('scroll', updateProgress, { passive: true });
+        window.addEventListener('resize', updateProgress, { passive: true });
         updateProgress(); // Initial call
     }
 

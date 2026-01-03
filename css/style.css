@@ -176,7 +176,8 @@ body {
 }
 
 .scroll-progress {
-    height: 0%;
+    bottom: auto;
+    height: 0;
     background: var(--accent);
     transition: height 0.1s linear;
 }
@@ -1342,6 +1343,25 @@ body {
 }
 
 .f-right a:hover {
+    color: var(--accent);
+}
+
+.powered-by {
+    display: inline-block;
+    margin-top: 8px;
+    color: var(--ink);
+    text-decoration: none;
+    opacity: 0.4;
+    transition: opacity var(--transition-medium);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.powered-by:hover {
+    opacity: 0.8;
+}
+
+.powered-by .accent {
     color: var(--accent);
 }
 
