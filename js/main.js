@@ -243,10 +243,17 @@ document.addEventListener('DOMContentLoaded', () => {
             const isActive = hamburger.classList.toggle('active');
             mobileMenu.classList.toggle('active');
 
+            // Helper for translations
+            const t = (key, fallback) => {
+                return (typeof I18n !== 'undefined' && I18n.t) ? I18n.t(key) || fallback : fallback;
+            };
+
             // Update ARIA attributes
             hamburger.setAttribute('aria-expanded', isActive.toString());
             mobileMenu.setAttribute('aria-hidden', (!isActive).toString());
-            hamburger.setAttribute('aria-label', isActive ? 'Zamknij menu' : 'Otwórz menu');
+            hamburger.setAttribute('aria-label', isActive
+                ? t('nav.menuClose', 'Zamknij menu')
+                : t('nav.menuOpen', 'Otwórz menu'));
 
             // Prevent body scroll when menu is open (using class for stronger lock)
             document.documentElement.classList.toggle('mobile-menu-active', isActive);
@@ -388,27 +395,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
             let isValid = true;
 
+            // Helper to get translated message (fallback to key if I18n not loaded)
+            const t = (key, fallback) => {
+                return (typeof I18n !== 'undefined' && I18n.t) ? I18n.t(key) || fallback : fallback;
+            };
+
             // Validate name
             const nameInput = contactForm.querySelector('#name');
             if (!name || name.length < 2) {
-                showFieldError(nameInput, 'Wprowadź imię i nazwisko');
+                showFieldError(nameInput, t('form.validation.nameRequired', 'Wprowadź imię i nazwisko'));
                 isValid = false;
             }
 
             // Validate email
             const emailInput = contactForm.querySelector('#email');
             if (emailInput && email && !emailRegex.test(email)) {
-                showFieldError(emailInput, 'Nieprawidłowy format email');
+                showFieldError(emailInput, t('form.validation.emailInvalid', 'Nieprawidłowy format email'));
                 isValid = false;
             }
 
             // Validate phone
             const phoneInput = contactForm.querySelector('#phone');
             if (!phone) {
-                showFieldError(phoneInput, 'Wprowadź numer telefonu');
+                showFieldError(phoneInput, t('form.validation.phoneRequired', 'Wprowadź numer telefonu'));
                 isValid = false;
             } else if (!phoneRegex.test(phone.replace(/\s/g, ''))) {
-                showFieldError(phoneInput, 'Nieprawidłowy format numeru');
+                showFieldError(phoneInput, t('form.validation.phoneInvalid', 'Nieprawidłowy format numeru'));
                 isValid = false;
             }
 
@@ -420,7 +432,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             if (!isValid) {
-                showNotification('error', 'Popraw błędy w formularzu.');
+                showNotification('error', t('form.error', 'Popraw błędy w formularzu.'));
                 return;
             }
 
@@ -429,7 +441,7 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log('Form submitted:', { name, email, phone, rodo: true });
 
             // Show success message
-            showNotification('success', 'Dziękujemy za zgłoszenie! Skontaktujemy się w ciągu 24h.');
+            showNotification('success', t('form.success', 'Dziękujemy za zgłoszenie! Skontaktujemy się w ciągu 24h.'));
 
             // Reset form
             contactForm.reset();
