@@ -279,7 +279,7 @@ body {
     gap: 60px;
 }
 
-/* Tech link with roll effect */
+/* Tech link with index number on hover */
 .tech-link {
     position: relative;
     font-family: var(--font-main);
@@ -288,45 +288,43 @@ body {
     text-decoration: none;
     color: var(--ink);
     padding: 5px 0;
-    overflow: hidden;
 }
 
+/* Index number (01, 02, 03) - positioned above text */
 .tech-link::before {
     content: attr(data-index);
     position: absolute;
-    top: -15px;
-    left: -15px;
+    top: -12px;
+    left: 0;
     font-family: var(--font-mono);
     font-size: 0.6rem;
+    font-weight: 500;
     color: var(--accent);
     opacity: 0;
-    transition: var(--transition-medium) var(--ease);
+    transform: translateY(5px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .tech-link:hover::before {
     opacity: 1;
-    top: -5px;
-    left: -10px;
+    transform: translateY(0);
 }
 
+/* Main text */
 .tech-link .link-txt {
     display: block;
-    transition: transform 0.4s var(--ease);
+    transition: opacity 0.3s ease, color 0.3s ease;
 }
 
+/* Hover text - hidden by default, uses same position */
 .tech-link .link-hvr {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    display: block;
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-    color: var(--accent);
-    transition: transform 0.4s var(--ease);
+    display: none;
 }
 
-.tech-link:hover .link-txt { transform: translateY(-150%); }
-.tech-link:hover .link-hvr { transform: translateY(-125%); }
+/* On hover - text changes to accent color */
+.tech-link:hover .link-txt {
+    color: var(--accent);
+}
 
 /* CAD Button - wrapper for 3D effect */
 .cad-btn {
