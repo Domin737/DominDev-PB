@@ -176,7 +176,8 @@ body {
 }
 
 .scroll-progress {
-    height: 0%;
+    bottom: auto;
+    height: 0;
     background: var(--accent);
     transition: height 0.1s linear;
 }
@@ -484,14 +485,18 @@ body {
 }
 
 /* ==========================================================================
-   HERO SECTION - Canva-like Grid Layout (ChatGPT + Gemini hybrid fix)
+   HERO SECTION - Full viewport height with centered content
    ========================================================================== */
 .hero-hybrid {
-    /* Remove min-height to prevent empty space below content */
-    padding-top: 120px;
-    padding-bottom: 60px;
+    /* Full viewport minus marquee strip (~50px) */
+    min-height: calc(100vh - 50px);
+    min-height: calc(100dvh - 50px); /* Dynamic viewport for mobile browsers */
+    padding-top: var(--nav-height);
+    padding-bottom: 40px;
     position: relative;
     overflow: hidden;
+    display: flex;
+    align-items: center;
 }
 
 /* Grid container - ~45/55 split like Canva */
@@ -500,6 +505,7 @@ body {
     grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
     align-items: center;
     gap: clamp(24px, 4vw, 64px);
+    width: 100%;
 }
 
 /* Left column: Text content */
@@ -1340,6 +1346,25 @@ body {
     color: var(--accent);
 }
 
+.powered-by {
+    display: inline-block;
+    margin-top: 8px;
+    color: var(--ink);
+    text-decoration: none;
+    opacity: 0.4;
+    transition: opacity var(--transition-medium);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.powered-by:hover {
+    opacity: 0.8;
+}
+
+.powered-by .accent {
+    color: var(--accent);
+}
+
 /* ==========================================================================
    ANIMATIONS - KEYFRAMES
    ========================================================================== */
@@ -1503,7 +1528,9 @@ body {
 @media (max-width: 1024px) {
     /* Hero - still 2 columns but tighter */
     .hero-hybrid {
-        padding-top: 100px;
+        min-height: calc(100vh - 50px);
+        min-height: calc(100dvh - 50px);
+        padding-top: 90px;
     }
 
     .hero-grid {
@@ -1567,21 +1594,51 @@ body {
 
     /* Hero - single column stacking on mobile */
     .hero-hybrid {
-        min-height: auto;
+        min-height: calc(100vh - 50px);
+        min-height: calc(100svh - 50px); /* Small viewport - excludes URL bar */
+        padding-top: 100px; /* More space below nav */
+        padding-bottom: 20px;
+        align-items: flex-start; /* Align to top, let content flow naturally */
     }
 
     .hero-grid {
         grid-template-columns: 1fr;
+        align-items: start;
     }
 
     .hero-visual {
         justify-self: center;
-        max-width: 560px;
-        margin-top: 40px;
+        max-width: 100%;
+        margin-top: 30px;
+        order: 2; /* Image after text on mobile */
+    }
+
+    .hero-txt {
+        order: 1;
     }
 
     .hero-title {
-        font-size: 3rem;
+        font-size: clamp(2.2rem, 8vw, 3rem);
+    }
+
+    .hero-sub {
+        font-size: 1rem;
+    }
+
+    .hero-coords {
+        margin-top: 25px;
+    }
+
+    .hero-cta {
+        margin-top: 25px;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .hero-img {
+        max-height: 35vh;
+        max-height: 35svh;
     }
 
     /* Stats */
@@ -1671,29 +1728,34 @@ body {
         --section-padding: 40px;
     }
 
+    .hero-hybrid {
+        padding-top: 90px; /* Space below nav on small screens */
+    }
+
     .hero-title {
-        font-size: 2.5rem;
+        font-size: clamp(1.8rem, 10vw, 2.5rem);
     }
 
     .hero-sub {
-        font-size: 1rem;
+        font-size: 0.95rem;
+        padding-left: 15px;
+    }
+
+    .hero-coords {
+        margin-top: 20px;
+        flex-wrap: wrap;
     }
 
     .hero-cta {
         flex-direction: column;
         align-items: center;
-        gap: 20px;
-        width: 100%;
+        gap: 15px;
+        margin-top: 20px;
     }
 
-    .hero-cta .cad-btn {
-        /* Don't use full width - keep inline to preserve shadow structure */
-        width: auto;
-        max-width: calc(100% - 8px); /* Account for shadow offset (4px) */
-    }
-
-    .hero-cta .cad-btn-text {
-        text-align: center;
+    .hero-img {
+        max-height: 30vh;
+        max-height: 30svh;
     }
 
     .section-h2 {
