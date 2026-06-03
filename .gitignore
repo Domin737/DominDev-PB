@@ -84,3 +84,6 @@ _docs/
 # === Package locks (optional - uncomment if you want to track) ===
 # package-lock.json
 # yarn.lock
+
+# Local Obsidian AI memory junction
+.obsidian-memory/
